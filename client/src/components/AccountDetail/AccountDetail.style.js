@@ -6,7 +6,7 @@ export const AccountDetailWrapper = styled(Flex)`
   flex-direction: column;
   width: 100%;
   min-height: 20rem;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.offwhite};
   justify-content: space-around;
