@@ -1,11 +1,12 @@
 import Body from "components/Layout/Body/Body";
+import Header from "components/Layout/Header/Header";
 import React from "react";
 import { Outlet } from "react-router-dom";
 
 function App() {
   return (
     <Body>
-      <h1>HEADER</h1>
+      <Header />
       <main>
         <Outlet />
       </main>
