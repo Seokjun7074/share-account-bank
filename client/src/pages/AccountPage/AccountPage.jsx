@@ -1,4 +1,11 @@
+import * as S from "./AccountPage.style";
+import AccountDetail from "components/AccountDetail/AccountDetail";
+
 const AccountPage = () => {
-  return <div>ACCOUNT</div>;
+  return (
+    <S.AccountPageWrapper>
+      <AccountDetail />
+    </S.AccountPageWrapper>
+  );
 };
 export default AccountPage;
