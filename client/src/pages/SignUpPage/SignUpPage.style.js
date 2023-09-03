@@ -27,6 +27,11 @@ export const InputBox = styled.input`
   width: 60%;
 `;
 
+export const PasswordCheckText = styled.span`
+  color: ${({ theme }) => theme.color.red};
+  font-size: ${({ theme }) => theme.fontSize.s};
+`;
+
 export const NextButton = styled(Button)`
   width: 60%;
   background-color: ${({ theme }) => theme.color.primary};

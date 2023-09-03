@@ -1,5 +1,6 @@
 import useInput from "hooks/useInput";
 import * as S from "./SignUpPage.style";
+import { useCallback, useEffect } from "react";
 
 const SignUpPage = () => {
   const [nameInput, setNameInput, nameHandler] = useInput("");
@@ -21,6 +22,11 @@ const SignUpPage = () => {
     console.log(submitform);
   };
 
+  const validatePassword = useCallback((currentPassword, checkPassword) => {
+    if (checkPassword === "") return true;
+    return currentPassword === checkPassword;
+  }, []);
+
   return (
     <S.SignUpPageWrapper>
       <S.SignUpText>정보를 입력해주세요</S.SignUpText>
@@ -31,6 +37,9 @@ const SignUpPage = () => {
         <S.InputBox placeholder="계좌번호" type="text" onChange={accountHandler} />
         <S.InputBox placeholder="비밀번호" type="password" onChange={passwordHandler} />
         <S.InputBox placeholder="비밀번호 확인" type="password" onChange={passwordCheckHandler} />
+        {!validatePassword(passwordInput, passwordCheckInput) && (
+          <S.PasswordCheckText>비밀번호를 확인해주세요.</S.PasswordCheckText>
+        )}
       </S.InputWrapper>
       <S.NextButton onClick={submitSignUp}>다음</S.NextButton>
     </S.SignUpPageWrapper>
