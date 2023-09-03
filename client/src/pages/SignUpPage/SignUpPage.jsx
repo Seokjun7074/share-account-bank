@@ -1,6 +1,6 @@
 import useInput from "hooks/useInput";
 import * as S from "./SignUpPage.style";
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 
 const SignUpPage = () => {
   const [nameInput, setNameInput, nameHandler] = useInput("");

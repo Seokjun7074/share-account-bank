@@ -1,6 +1,5 @@
-import App from "App";
-import Body from "components/Layout/Body/Body";
 import HeaderLessLayout from "components/Layout/HeaderLessLayout/HeaderLessLayout";
+import Layout from "components/Layout/Layout";
 import AccountPage from "pages/AccountPage/AccountPage";
 import IntroPage from "pages/IntroPage/IntroPage";
 import LoginPage from "pages/LoginPage/LoginPage";
@@ -32,7 +31,7 @@ const AppRouter = () => {
     },
     {
       path: "/",
-      element: <App />,
+      element: <Layout />,
       errorElement: <NotFoundPage />,
       children: [
         {
