@@ -5,6 +5,7 @@ import IntroPage from "pages/IntroPage/IntroPage";
 import LoginPage from "pages/LoginPage/LoginPage";
 import MainPage from "pages/MainPage/MainPage";
 import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
+import RegistAccountPage from "pages/RegistAccountPage/RegistAccountPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
@@ -41,6 +42,10 @@ const AppRouter = () => {
         {
           path: "/account/:groupId",
           element: <AccountPage />,
+        },
+        {
+          path: "/regist-account",
+          element: <RegistAccountPage />,
         },
       ],
     },

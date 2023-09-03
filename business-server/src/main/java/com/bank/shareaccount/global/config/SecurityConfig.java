@@ -1,9 +1,9 @@
 package com.bank.shareaccount.global.config;
 
 import com.bank.shareaccount.global.filter.JwtAuthorizationFilter;
-import com.bank.shareaccount.global.filter.LoginFilter;
 import com.bank.shareaccount.global.filter.LogoutFilter;
 import com.bank.shareaccount.global.jwt.JwtService;
+import com.bank.shareaccount.global.filter.LoginFilter;
 import com.bank.shareaccount.user.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
@@ -18,6 +18,7 @@ import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.intercept.AuthorizationFilter;
+import org.springframework.security.web.authentication.AuthenticationFilter;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor

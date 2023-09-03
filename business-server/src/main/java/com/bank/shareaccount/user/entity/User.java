@@ -1,9 +1,13 @@
 package com.bank.shareaccount.user.entity;
 
+import com.bank.shareaccount.group.entity.Group;
+import com.bank.shareaccount.group.entity.Group_User;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
@@ -30,6 +34,10 @@ public class User {
     @Column(name = "refresh_token")
     private String refreshToken; // 리프레시 토큰
 
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Group_User> groups = new ArrayList<>();
+
     // 비밀번호 암호화 메소드
     public void passwordEncode(PasswordEncoder passwordEncoder) {
         this.password = passwordEncoder.encode(this.password);
@@ -37,5 +45,14 @@ public class User {
 
     public void updateRefreshToken(String updateRefreshToken) {
         this.refreshToken = updateRefreshToken;
+    }
+
+    public void joinGroup(Group_User group_user) {
+        group_user.setUser(this);
+        groups.add(group_user);
+    }
+
+    public void exitGroup(Group_User group_user){
+        groups.remove(group_user);
     }
 }
