@@ -34,7 +34,10 @@ const SignUpPage = () => {
         <S.InputBox placeholder="이름" type="text" onChange={nameHandler} />
         <S.InputBox placeholder="이메일" type="email" onChange={idHandler} />
         <S.InputBox placeholder="전화번호" type="text" onChange={phoneHandler} />
-        <S.InputBox placeholder="계좌번호" type="text" onChange={accountHandler} />
+        <S.ValidateAccountContiner>
+          <S.InputBox placeholder="계좌번호" type="text" onChange={accountHandler} />
+          <S.ValidateAccountButton>인증</S.ValidateAccountButton>
+        </S.ValidateAccountContiner>
         <S.InputBox placeholder="비밀번호" type="password" onChange={passwordHandler} />
         <S.InputBox placeholder="비밀번호 확인" type="password" onChange={passwordCheckHandler} />
         {!validatePassword(passwordInput, passwordCheckInput) && (

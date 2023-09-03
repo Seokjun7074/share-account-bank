@@ -16,6 +16,7 @@ export const SignUpText = styled.span`
 `;
 
 export const InputWrapper = styled(Flex)`
+  width: 60%;
   flex-direction: column;
   justify-content: space-around;
   gap: 3.5rem;
@@ -24,7 +25,19 @@ export const InputWrapper = styled(Flex)`
 export const InputBox = styled.input`
   padding: 0.5rem 1rem;
   border-bottom: solid 1px ${({ theme }) => theme.color.darkgray};
-  width: 60%;
+  width: 100%;
+`;
+
+export const ValidateAccountContiner = styled(Flex)`
+  justify-content: space-between;
+  width: 100%;
+`;
+export const ValidateAccountButton = styled(Button)`
+  width: 5rem;
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 0;
 `;
 
 export const PasswordCheckText = styled.span`
