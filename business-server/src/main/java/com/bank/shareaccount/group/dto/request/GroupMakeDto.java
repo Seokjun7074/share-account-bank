@@ -5,6 +5,7 @@ import com.bank.shareaccount.group.entity.Group;
 import lombok.Data;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Data
 public class GroupMakeDto {
@@ -25,6 +26,7 @@ public class GroupMakeDto {
                 .dues(dues)
                 .duesDate(duesDate)
                 .startDate(startDate)
+                .members(new ArrayList<>())
                 .limit(limitMember)
                 .money(Money.valueOf(money.toUpperCase()))
                 .build();

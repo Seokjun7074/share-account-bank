@@ -32,7 +32,7 @@ public class Notification {
     private Group group;
 
     private String content;
-    @Column(name = "notification_type")
+    @Column(name = "notification_date")
     private Date date;
     @Column(name = "notification_type")
     private Type type;

@@ -3,23 +3,27 @@ package com.bank.shareaccount.group.service;
 import com.bank.shareaccount.group.dto.request.GroupMakeDto;
 import com.bank.shareaccount.group.dto.request.GroupUpdateDto;
 import com.bank.shareaccount.group.dto.response.GroupInfoDto;
+import com.bank.shareaccount.group.dto.response.GroupJoinLinkDto;
 import com.bank.shareaccount.group.entity.Group;
 
 public interface GroupService {
     void make(GroupMakeDto groupMakeDto);
 
-    void exit(Long groupId);
+    void exit(String groupId);
 
-    void approvalExit(Long groupId, Long exitUserId);
+    void approvalExit(String groupId, Long exitUserId);
 
-    void delete(Long groupId);
+    void delete(String groupId);
 
-    GroupInfoDto getInfo(Long groupId);
+    GroupInfoDto getInfo(String groupName);
 
-    void update(GroupUpdateDto groupUpdateDto, Long groupId);
+    void update(GroupUpdateDto groupUpdateDto, String groupName);
 
-    Group getGroupById(Long groupId);
+    Group getGroupByName(String groupName);
     void joinGroup(String userId, String groupId);
     void admitJoin(String groupId, String id);
     void addGroup(String groupId, String userId);
+    String createJoinLink(String groupId);
+    GroupJoinLinkDto link(String linkId);
+    Boolean isLinkValid(String url, String groupId);
 }

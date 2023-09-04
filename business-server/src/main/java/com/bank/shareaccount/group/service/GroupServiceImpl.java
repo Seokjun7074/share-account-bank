@@ -3,39 +3,47 @@ package com.bank.shareaccount.group.service;
 import com.bank.shareaccount.group.dto.request.GroupMakeDto;
 import com.bank.shareaccount.group.dto.request.GroupUpdateDto;
 import com.bank.shareaccount.group.dto.response.GroupInfoDto;
+import com.bank.shareaccount.group.dto.response.GroupJoinLinkDto;
 import com.bank.shareaccount.group.entity.Access;
 import com.bank.shareaccount.group.entity.Group;
 import com.bank.shareaccount.group.entity.Group_User;
+import com.bank.shareaccount.group.entity.Link;
 import com.bank.shareaccount.group.repository.AccessRepository;
 import com.bank.shareaccount.group.repository.GroupRepository;
 import com.bank.shareaccount.group.repository.Group_UserRepository;
+import com.bank.shareaccount.group.repository.LinkRepository;
 import com.bank.shareaccount.notification.Type;
 import com.bank.shareaccount.notification.entity.Notification;
 import com.bank.shareaccount.notification.repository.NotificationRepository;
 import com.bank.shareaccount.user.entity.User;
 import com.bank.shareaccount.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.UUID;
 
 @Transactional
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class GroupServiceImpl implements GroupService {
     private final UserRepository userRepository;
     private final GroupRepository groupRepository;
     private final NotificationRepository notificationRepository;
     private final AccessRepository accessRepository;
     private final Group_UserRepository group_userRepository;
+    private final LinkRepository linkRepository;
 
     @Override
     public void make(GroupMakeDto groupMakeDto) {
         User user = userRepository.findByAccount(groupMakeDto.getAccount()).orElseThrow(IllegalArgumentException::new);
         Group group = groupMakeDto.toEntity();
 
-        Group_User group_user = Group_User.builder().build();
+        Group_User group_user = Group_User.builder()
+                .build();
 
         user.joinGroup(group_user);
         group.addMember(group_user);
@@ -46,18 +54,18 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void exit(Long groupId) {
+    public void exit(String groupName) {
         // 어느 특정 사용자가 해당 아이디의 그룹을 탈퇴하고 싶음
         // 탈퇴하려면 일단 방장의 승인을 받아야함 = 방장한테 알림을 줘야함
-        Group group = getGroupById(groupId);
+        Group group = getGroupByName(groupName);
 
         // 이제 리더한테 알림을 주면됨
         User leader = group.getLeader();
     }
 
     @Override
-    public void approvalExit(Long groupId, Long exitUserId) {
-        Group group = getGroupById(groupId);
+    public void approvalExit(String groupName, Long exitUserId) {
+        Group group = getGroupByName(groupName);
         User exitUser = userRepository.findById(exitUserId).orElseThrow(IllegalArgumentException::new);
 
         Group_User group_user = group_userRepository.findGroup_UserByGroupAndUser(group, exitUser).orElseThrow(IllegalArgumentException::new);
@@ -75,8 +83,8 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public void delete(Long groupId) {
-        Group group = getGroupById(groupId);
+    public void delete(String groupName) {
+        Group group = getGroupByName(groupName);
         // 어케 지워야할까
 
         // 일단 해당 그룹에 포함되어있는애들 다 빼자
@@ -89,20 +97,20 @@ public class GroupServiceImpl implements GroupService {
     }
 
     @Override
-    public GroupInfoDto getInfo(Long groupId) {
+    public GroupInfoDto getInfo(String groupName) {
         // 뭘 보여줘야하는지 모르겠다 그냥 다 넘긴다
         GroupInfoDto groupInfoDto = GroupInfoDto.builder().build();
-        return GroupInfoDto.from(getGroupById(groupId));
+        return GroupInfoDto.from(getGroupByName(groupName));
     }
 
     @Override
-    public void update(GroupUpdateDto groupUpdateDto, Long groupId) {
-        getGroupById(groupId).update(groupUpdateDto);
+    public void update(GroupUpdateDto groupUpdateDto, String groupName) {
+        getGroupByName(groupName).update(groupUpdateDto);
     }
 
     @Override
-    public Group getGroupById(Long groupId) {
-        return groupRepository.findById(groupId).orElseThrow(IllegalArgumentException::new);
+    public Group getGroupByName(String groupName) {
+        return groupRepository.findByName(groupName).orElseThrow(IllegalArgumentException::new);
     }
 
     @Override
@@ -141,5 +149,31 @@ public class GroupServiceImpl implements GroupService {
         group_userRepository.save(group_user);
     }
 
+    public String createJoinLink(String groupId){
+        Group group= groupRepository.findByName(groupId).orElseThrow(IllegalAccessError::new);
+        String url = UUID.randomUUID().toString();
+        Link link = Link.builder()
+                        .group(group)
+                                .url(url)
+                .build();
+        linkRepository.save(link);
+        return url;
+    }
 
+    @Override
+    public GroupJoinLinkDto link(String linkId) {
+        Link link = linkRepository.findByUrl(linkId).orElseThrow(IllegalAccessError::new);
+        GroupJoinLinkDto groupJoinLinkDto = new GroupJoinLinkDto(link.getGroup().getName(),link.isUsed());
+        return groupJoinLinkDto;
+    }
+
+    @Override
+    public Boolean isLinkValid(String url, String groupId) {
+        log.info("요청 url : {}",url);
+        Link link = linkRepository.findByUrl(url).orElseThrow(IllegalAccessError::new);
+        if(link.getGroup().getName().equals(groupId) && !link.isUsed()){
+            return true;
+        }
+        return false;
+    }
 }

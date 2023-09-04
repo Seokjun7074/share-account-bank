@@ -28,7 +28,7 @@ public class JwtAuthorizationFilter extends OncePerRequestFilter {
 
     private final UserRepository userRepository;
 
-    private final String[] permitUrls;
+    private final String[] permitUrls ;
 
 
     @Override
