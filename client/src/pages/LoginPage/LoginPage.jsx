@@ -10,7 +10,11 @@ const LoginPage = () => {
   const [passwordInput, setPasswordInput, passwordHandler] = useInput("");
   const loginMutation = useMutation({
     mutationFn: userAPI.login,
-    onSuccess: () => {
+    onSuccess: (data, variables, context) => {
+      const token = context.response.headers.get("Authorization");
+      const refresh = context.response.headers.get("Authorization-refresh");
+      sessionStorage.setItem("Authorization", token);
+      sessionStorage.setItem("Authorization-refresh", refresh);
       navigate("/main");
     },
   });
@@ -28,7 +32,11 @@ const LoginPage = () => {
       <S.LoginText> </S.LoginText>
       <S.InputWrapper>
         <S.InputBox placeholder="이메일" type="email" onChange={idHandler} />
-        <S.InputBox placeholder="비밀번호" type="password" onChange={passwordHandler} />
+        <S.InputBox
+          placeholder="비밀번호"
+          type="password"
+          onChange={passwordHandler}
+        />
       </S.InputWrapper>
       <S.NextButton onClick={submitSignUp}>로그인</S.NextButton>
     </S.LoginPageWrapper>
