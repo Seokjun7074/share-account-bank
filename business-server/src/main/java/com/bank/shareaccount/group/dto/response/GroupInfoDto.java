@@ -1,6 +1,5 @@
 package com.bank.shareaccount.group.dto.response;
 
-import com.bank.shareaccount.group.Money;
 import com.bank.shareaccount.group.entity.Group;
 import lombok.Builder;
 import lombok.Data;

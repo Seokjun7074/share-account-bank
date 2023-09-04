@@ -21,4 +21,8 @@ public class Link {
     @ManyToOne
     @JoinColumn(name = "group_id")
     private Group group;
+
+    public void setUsed(){
+        this.isUsed=true;
+    }
 }

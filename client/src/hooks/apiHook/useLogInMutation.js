@@ -7,11 +7,9 @@ export const useLogInMutation = () => {
 
   const loginMutation = useMutation({
     mutationFn: userAPI.login,
-    onSuccess: (data, variables, context) => {
-      const token = context.response.headers.get("Authorization");
-      const refresh = context.response.headers.get("Authorization-refresh");
-      sessionStorage.setItem("Authorization", token);
-      sessionStorage.setItem("Authorization-refresh", refresh);
+    onSuccess: ({ data }) => {
+      sessionStorage.setItem("Authorization", data.accessToken);
+      sessionStorage.setItem("Authorization-refresh", data.refreshToken);
       navigate("/main");
     },
     onError: () => {

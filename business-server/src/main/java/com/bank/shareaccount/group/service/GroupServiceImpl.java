@@ -113,6 +113,7 @@ public class GroupServiceImpl implements GroupService {
         return groupRepository.findByName(groupName).orElseThrow(IllegalArgumentException::new);
     }
 
+
     @Override
     public void joinGroup(String userId, String groupId) {
         // 그룹장에게 알림 보내기, access에 넣기.
@@ -167,13 +168,17 @@ public class GroupServiceImpl implements GroupService {
         return groupJoinLinkDto;
     }
 
+
+
     @Override
     public Boolean isLinkValid(String url, String groupId) {
-        log.info("요청 url : {}",url);
         Link link = linkRepository.findByUrl(url).orElseThrow(IllegalAccessError::new);
         if(link.getGroup().getName().equals(groupId) && !link.isUsed()){
+            link.setUsed();
+            linkRepository.save(link);
             return true;
         }
         return false;
+
     }
 }

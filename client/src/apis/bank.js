@@ -4,6 +4,11 @@ const bankAPI = {
   verifyAccount: (name, account) =>
     axiosInstance.post("/accounts/verification", { name, account }),
 
+  transactAccount: (sender, receiver, amount) =>
+    axiosInstance.post("/accounts/transactions", { sender, receiver, amount }),
+
+  depositAccount: (userId, amount) => axiosInstance.post("/accounts/deposit", { userId, amount }),
+
   transferAccount: () => axiosInstance.post("/accounts/verification"),
 
   createAccount: (userId) => axiosInstance.post("/accounts", { userId }),

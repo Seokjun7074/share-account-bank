@@ -74,6 +74,19 @@ public class GroupController {
         groupService.admitJoin(groupName,senderName.get("id"));
         return null;
     }
+    @PostMapping("/groups/{groupId}")
+    public ResponseEntity<?> joinGroup(@PathVariable String groupId,@RequestBody String url, @AuthenticationPrincipal UserDetails userDetails){
+        if(!groupService.isLinkValid(url,groupId)){
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+        groupService.joinGroup(userDetails.getUsername(),groupId);
+          return new ResponseEntity<>(HttpStatus.ACCEPTED);
+    }
+    @PostMapping("/groups/{groupId}/approval/join")
+    public ResponseEntity<?> admitJoin(@PathVariable String groupId,@RequestBody String id){
+        groupService.admitJoin(groupId,id);
+        return null;
+    }
     @PostMapping("/groups/{groupId}/link")
     public ResponseEntity<String> createJoinLink(@PathVariable String groupId){
         return new ResponseEntity<>(groupService.createJoinLink(groupId), HttpStatus.ACCEPTED);

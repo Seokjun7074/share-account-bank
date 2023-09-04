@@ -7,8 +7,6 @@ import com.bank.shareaccount.user.dto.response.UserInfoResponseDto;
 import com.bank.shareaccount.user.dto.response.UserTokenResponseDto;
 import com.bank.shareaccount.user.entity.User;
 
-import javax.servlet.http.HttpServletResponse;
-
 public interface UserService {
 
     UserTokenResponseDto signUp(UserSignUpDto userSignUpDto);

@@ -1,6 +1,5 @@
 package com.bank.shareaccount.user.entity;
 
-import com.bank.shareaccount.group.entity.Group;
 import com.bank.shareaccount.group.entity.Group_User;
 import lombok.*;
 import org.springframework.security.crypto.password.PasswordEncoder;
