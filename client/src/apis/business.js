@@ -1,7 +1,7 @@
 import { axiosInstance } from "./index";
 
 const businessAPI = {
-  getGroupInformation: (groupId) => axiosInstance.get(`/groups/${groupId}`),
+  getGroup: (groupId) => axiosInstance.get(`/groups/${groupId}`),
 
   editGroupInformation: (groupId, groupName, goal, startDate) =>
     axiosInstance.put(`/groups/${groupId}`, {
@@ -10,7 +10,7 @@ const businessAPI = {
       startDate,
     }),
 
-  joinGroup: (groupId) => axiosInstance.post(`/groups/${groupId}`),
+  joinGroup: (groupId, url) => axiosInstance.post(`/groups/${groupId}`, { url }),
 
   approveJoinGroup: (groupId, id) => axiosInstance.post(`/groups/${groupId}/approval/join`, { id }),
 
@@ -27,6 +27,8 @@ const businessAPI = {
     }),
 
   makeJoinLink: (groupId) => axiosInstance.get(`/groups/${groupId}/link`),
+
+  enterJoinLink: (linkId) => axiosInstance.get(`/link/${linkId}`),
 
   exitJoinLink: (groupId) => axiosInstance.post(`/groups/${groupId}/exit`),
 
