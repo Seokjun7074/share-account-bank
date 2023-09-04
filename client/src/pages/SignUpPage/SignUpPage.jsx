@@ -1,24 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "@tanstack/react-query";
+import { useCallback } from "react";
 import useInput from "hooks/useInput";
 import * as S from "./SignUpPage.style";
-import { useCallback } from "react";
-import userAPI from "apis/user";
+import { useSignUpMutation } from "hooks/apiHook/useSignUpMutation";
 
 const SignUpPage = () => {
-  const navigate = useNavigate();
   const [nameInput, setNameInput, nameHandler] = useInput("");
   const [idInput, setIdInput, idHandler] = useInput("");
   const [phoneInput, setPhoneInput, phoneHandler] = useInput("");
   const [accountInput, setAccountInput, accountHandler] = useInput("");
   const [passwordInput, setPasswordInput, passwordHandler] = useInput("");
-  const [passwordCheckInput, setPasswordCheckInput, passwordCheckHandler] = useInput("");
-  const signUpMutation = useMutation({
-    mutationFn: userAPI.signup,
-    onSuccess: () => {
-      navigate("/main");
-    },
-  });
+  const [passwordCheckInput, setPasswordCheckInput, passwordCheckHandler] =
+    useInput("");
+  const signUpMutation = useSignUpMutation();
 
   const submitSignUp = () => {
     const submitform = {
@@ -43,13 +36,29 @@ const SignUpPage = () => {
       <S.InputWrapper>
         <S.InputBox placeholder="이름" type="text" onChange={nameHandler} />
         <S.InputBox placeholder="이메일" type="email" onChange={idHandler} />
-        <S.InputBox placeholder="전화번호" type="text" onChange={phoneHandler} />
+        <S.InputBox
+          placeholder="전화번호"
+          type="text"
+          onChange={phoneHandler}
+        />
         <S.ValidateAccountContiner>
-          <S.InputBox placeholder="계좌번호" type="text" onChange={accountHandler} />
+          <S.InputBox
+            placeholder="계좌번호"
+            type="text"
+            onChange={accountHandler}
+          />
           <S.ValidateAccountButton>인증</S.ValidateAccountButton>
         </S.ValidateAccountContiner>
-        <S.InputBox placeholder="비밀번호" type="password" onChange={passwordHandler} />
-        <S.InputBox placeholder="비밀번호 확인" type="password" onChange={passwordCheckHandler} />
+        <S.InputBox
+          placeholder="비밀번호"
+          type="password"
+          onChange={passwordHandler}
+        />
+        <S.InputBox
+          placeholder="비밀번호 확인"
+          type="password"
+          onChange={passwordCheckHandler}
+        />
         {!validatePassword(passwordInput, passwordCheckInput) && (
           <S.PasswordCheckText>비밀번호를 확인해주세요.</S.PasswordCheckText>
         )}

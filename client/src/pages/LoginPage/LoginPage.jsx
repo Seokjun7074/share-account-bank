@@ -1,23 +1,11 @@
-import { useMutation } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
 import useInput from "hooks/useInput";
 import * as S from "./LoginPage.style";
-import userAPI from "apis/user";
+import { useLogInMutation } from "hooks/apiHook/useLogInMutation";
 
 const LoginPage = () => {
-  const navigate = useNavigate();
   const [idInput, setIdInput, idHandler] = useInput("");
   const [passwordInput, setPasswordInput, passwordHandler] = useInput("");
-  const loginMutation = useMutation({
-    mutationFn: userAPI.login,
-    onSuccess: (data, variables, context) => {
-      const token = context.response.headers.get("Authorization");
-      const refresh = context.response.headers.get("Authorization-refresh");
-      sessionStorage.setItem("Authorization", token);
-      sessionStorage.setItem("Authorization-refresh", refresh);
-      navigate("/main");
-    },
-  });
+  const loginMutation = useLogInMutation();
 
   const submitSignUp = () => {
     const submitform = {
