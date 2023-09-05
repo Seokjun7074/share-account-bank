@@ -13,8 +13,3 @@ export const LabelWrapper = styled(Flex)`
   color: ${({ theme }) => theme.color.darkgray};
   font-weight: bold;
 `;
-
-export const GroupListContainer = styled(Flex)`
-  flex-direction: column;
-  gap: 2.5rem;
-`;

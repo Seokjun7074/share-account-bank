@@ -1,7 +1,7 @@
 import Flex from "components/@common/Flex/Flex";
 import { styled } from "styled-components";
 
-export const AccountWrapper = styled(Flex)`
+export const GroupItemWrapper = styled(Flex)`
   flex-direction: column;
   width: 100%;
   min-height: 17rem;
@@ -9,15 +9,14 @@ export const AccountWrapper = styled(Flex)`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.offwhite};
   justify-content: space-around;
-  /* box-shadow: 0px 0px 8px 1px ${({ theme }) => theme.color.lightgray}; */
 `;
 
-export const AccountNameContainer = styled(Flex)`
+export const GroupItemNameContainer = styled(Flex)`
   width: 100%;
   justify-content: start;
 `;
 
-export const AccountName = styled.span`
+export const GroupItemName = styled.span`
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: bold;
   color: ${({ theme }) => theme.color.black};
@@ -29,7 +28,7 @@ export const DepositContainer = styled(Flex)`
   gap: 1rem;
 `;
 
-export const AccountNumber = styled.span`
+export const GroupItemNumber = styled.span`
   font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.color.lightgray};
 `;

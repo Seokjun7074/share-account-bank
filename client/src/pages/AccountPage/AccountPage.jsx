@@ -1,6 +1,6 @@
-import GroupDetail from "components/GroupDetail/GroupDetail";
+import GroupDetail from "components/group/GroupDetail/GroupDetail";
 import * as S from "./AccountPage.style";
-import AccountDetail from "components/AccountDetail/AccountDetail";
+import AccountDetail from "components/account/AccountDetail/AccountDetail";
 
 const AccountPage = () => {
   return (

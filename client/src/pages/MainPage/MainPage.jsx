@@ -1,5 +1,5 @@
-import Account from "components/Account/Account";
 import * as S from "./MainPage.style";
+import GroupList from "components/group/GroupList/GroupList";
 
 const MainPage = () => {
   const dummyGroupList = [
@@ -11,16 +11,7 @@ const MainPage = () => {
   return (
     <S.MainPageWrapper>
       <S.LabelWrapper>나의 모임 통장</S.LabelWrapper>
-      <S.GroupListContainer>
-        {dummyGroupList.map((group) => (
-          <Account
-            key={group.accountName}
-            accountName={group.accountName}
-            accountNumber={group.accountNumber}
-            deposit={group.deposit}
-          />
-        ))}
-      </S.GroupListContainer>
+      <GroupList groupList={dummyGroupList} />
     </S.MainPageWrapper>
   );
 };
