@@ -3,6 +3,8 @@ import { axiosInstance } from "./index";
 const businessAPI = {
   getGroup: (groupId) => axiosInstance.get(`/groups/${groupId}`),
 
+  getGroupList: () => axiosInstance.get("/groups"),
+
   editGroupInformation: (groupId, groupName, goal, startDate) =>
     axiosInstance.put(`/groups/${groupId}`, {
       groupName,

@@ -2,8 +2,10 @@ import { useNavigate } from "react-router-dom";
 import * as S from "./MainPage.style";
 import GroupList from "components/group/GroupList/GroupList";
 import { PATH } from "constants/path";
+import { useGroupQuery } from "hooks/apiHook/useGroupQuery";
 
 const MainPage = () => {
+  const groupData = useGroupQuery();
   const navigate = useNavigate();
   const dummyGroupList = [
     { accountName: "name1", accountNumber: "110-22-3456", deposit: "300000" },
@@ -15,9 +17,7 @@ const MainPage = () => {
     <S.MainPageWrapper>
       <S.LabelWrapper>나의 모임 통장</S.LabelWrapper>
       <GroupList groupList={dummyGroupList} />
-      <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>
-        +
-      </S.CreateGroupButton>
+      <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>+</S.CreateGroupButton>
     </S.MainPageWrapper>
   );
 };
