@@ -2,6 +2,7 @@ import useForm from "hooks/useForm";
 import * as S from "./RegistGroupPage.style";
 import { useSetGroupMutation } from "hooks/apiHook/useSetGroupMutation";
 import { Form } from "components/@common/Form/Form";
+import { useEffect, useState } from "react";
 
 const RegistGroupPage = () => {
   const intitialValue = {
@@ -14,6 +15,7 @@ const RegistGroupPage = () => {
     limitMember: "", // 제한 인원
     money: "", // yen, yuan, dollar, euro, en ...
   };
+  const [currentDate, setCurrentDate] = useState(new Date().toISOString().slice(0, 10));
   const [registForm, handleregistForm] = useForm(intitialValue);
   const setGroupMutation = useSetGroupMutation();
 
@@ -27,35 +29,15 @@ const RegistGroupPage = () => {
       <S.RegistGroupText>모임통장 만들기</S.RegistGroupText>
       <S.InputWrapper>
         <Form onSubmit={handleSubmit}>
-          <S.InputBox
-            placeholder="모임 이름"
-            type="text"
-            name="groupName"
-            onChange={handleregistForm}
-            required
-          />
-          <S.InputBox
-            placeholder="계좌"
-            type="email"
-            name="account"
-            onChange={handleregistForm}
-          />
-          <S.InputBox
-            placeholder="목표금액"
-            type="text"
-            name="goal"
-            onChange={handleregistForm}
-          />
-          <S.InputBox
-            placeholder="회비"
-            type="text"
-            name="dues"
-            onChange={handleregistForm}
-          />
+          <S.InputBox placeholder="모임 이름" type="text" name="groupName" onChange={handleregistForm} required />
+          <S.InputBox placeholder="계좌" type="email" name="account" onChange={handleregistForm} />
+          <S.InputBox placeholder="목표금액" type="text" name="goal" onChange={handleregistForm} />
+          <S.InputBox placeholder="회비" type="text" name="dues" onChange={handleregistForm} />
           <div>자동이체일</div>
           <S.InputBox
             placeholder="자동이체일"
             type="date"
+            value={currentDate}
             name="duesDate"
             onChange={handleregistForm}
           />
@@ -63,21 +45,13 @@ const RegistGroupPage = () => {
           <S.InputBox
             placeholder="여행예정일"
             type="date"
+            value={currentDate}
+            min={currentDate}
             name="startDate"
             onChange={handleregistForm}
           />
-          <S.InputBox
-            placeholder="참여인원"
-            type="number"
-            name="limitMember"
-            onChange={handleregistForm}
-          />
-          <S.InputBox
-            placeholder="외화"
-            type="text"
-            name="money"
-            onChange={handleregistForm}
-          />
+          <S.InputBox placeholder="참여인원" type="number" min="1" name="limitMember" onChange={handleregistForm} />
+          <S.InputBox placeholder="외화" type="text" name="money" onChange={handleregistForm} />
           <S.NextButton type="submit" onClick={handleSubmit}>
             다음
           </S.NextButton>
