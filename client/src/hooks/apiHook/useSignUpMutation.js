@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import userAPI from "apis/user";
+import { PATH } from "constants/path";
 
 export const useSignUpMutation = () => {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ export const useSignUpMutation = () => {
     mutationFn: userAPI.signup,
     onSuccess: () => {
       alert("회원가입 완료!");
-      navigate("/login");
+      navigate(PATH.LOGIN_PAGE);
     },
     onError: () => {
       alert("로그인 실패");
