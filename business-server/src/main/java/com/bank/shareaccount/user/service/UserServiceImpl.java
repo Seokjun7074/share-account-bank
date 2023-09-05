@@ -1,6 +1,5 @@
 package com.bank.shareaccount.user.service;
 
-import com.bank.shareaccount.global.jwt.JwtService;
 import com.bank.shareaccount.user.dto.request.UserChangePasswordDto;
 import com.bank.shareaccount.user.dto.request.UserSignUpDto;
 import com.bank.shareaccount.user.dto.request.UserUpdateDto;
@@ -18,16 +17,14 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImpl implements UserService{
 
-    private final JwtService jwtService;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
     @Override
-    public UserTokenResponseDto signUp(UserSignUpDto userSignUpDto) {
+    public void signUp(UserSignUpDto userSignUpDto) {
         User user= userSignUpDto.toEntity();
         user.passwordEncode(passwordEncoder);
         userRepository.save(user);
-        return null;
     }
 
     @Override

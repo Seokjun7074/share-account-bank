@@ -1,7 +1,25 @@
+jwt:
+  secretKey: "669629e79bec9fdc11391e28bb7232c80660499499add816f4ae3ff1a5c10a1aa4fffa0b725957934271e1c54a061e2f2956ebba3727aa7aa7a3fee8c6480a97" # Base64? ???? ?? ?, HS512? ??? ??? ???, 64??? ??? ??? ?
+  access:
+    expiration: 1800000 # 30 ?
+    header: Authorization
+  refresh:
+    expiration: 1209600000 #  2?
+    header: Authorization-refresh
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+        type:
+          descriptor:
+            sql: trace # TRACE Log? ?? ???? ??
+
 spring:
   config:
     import:
-      - classpath:application-secret.yml
+      - optional:application-secret.yml
   #
   #  datasource:
   #    url: ${url}
@@ -21,20 +39,5 @@ spring:
         format_sql: true
         use_sql_comments: true
 
-jwt:
-  secretKey: "669629e79bec9fdc11391e28bb7232c80660499499add816f4ae3ff1a5c10a1aa4fffa0b725957934271e1c54a061e2f2956ebba3727aa7aa7a3fee8c6480a97" # Base64? ???? ?? ?, HS512? ??? ??? ???, 64??? ??? ??? ?
-  access:
-    expiration: 1800000 # 30 ?
-    header: Authorization
-  refresh:
-    expiration: 1209600000 #  2?
-    header: Authorization-refresh
-
-logging:
-  level:
-    org:
-      hibernate:
-        SQL: DEBUG
-        type:
-          descriptor:
-            sql: trace # TRACE Log? ?? ???? ??
+uri:
+  permits: "/login, /signup, /test*, /accounts/*, /accounts**"

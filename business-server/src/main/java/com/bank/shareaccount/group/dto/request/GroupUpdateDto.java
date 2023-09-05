@@ -1,5 +1,7 @@
 package com.bank.shareaccount.group.dto.request;
 
+import com.bank.shareaccount.group.Money;
+import com.bank.shareaccount.group.entity.Group;
 import lombok.Data;
 
 import java.time.LocalDate;

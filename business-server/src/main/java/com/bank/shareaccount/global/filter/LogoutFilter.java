@@ -39,8 +39,6 @@ public class LogoutFilter extends OncePerRequestFilter {
         String expiredToken = jwtService.createExpiredToken();
         jwtService.sendBothToken(response, expiredToken, expiredToken);
 
-        user.updateRefreshToken(expiredToken);
-
         filterChain.doFilter(request, response);
     }
 }

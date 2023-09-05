@@ -5,11 +5,13 @@ import com.bank.shareaccount.global.util.CustomHttpServletRequestWrapper;
 import com.bank.shareaccount.user.entity.User;
 import com.bank.shareaccount.user.repository.UserRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.Builder;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.stereotype.Component;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
@@ -21,11 +23,12 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
 
+@Builder
 @RequiredArgsConstructor
 @Slf4j
 public class LoginFilter extends OncePerRequestFilter {
-
     private static final String CONTENT_TYPE = "application/json";
+
     private final ObjectMapper objectMapper;
     private final UserRepository userRepository;
     private final JwtService jwtService;
@@ -60,9 +63,8 @@ public class LoginFilter extends OncePerRequestFilter {
             String newRefreshToken = jwtService.createRefreshToken();
             jwtService.sendBothToken(response, newAccessToken, newRefreshToken);
 
-//            user.updateRefreshToken(newRefreshToken);
-            redisTemplate.opsForValue().set(id,newRefreshToken);
-//            userRepository.saveAndFlush(user);
+            redisTemplate.opsForValue().set(id, newRefreshToken);
+
             HttpServletRequest requestWrapper = new CustomHttpServletRequestWrapper(request, messageBody);
             filterChain.doFilter(requestWrapper, response);
         }
