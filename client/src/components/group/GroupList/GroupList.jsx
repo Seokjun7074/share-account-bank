@@ -5,12 +5,7 @@ const GroupList = ({ groupList }) => {
   return (
     <GroupListWrapper>
       {groupList.map((group) => (
-        <GroupItem
-          key={group.accountName}
-          accountName={group.accountName}
-          accountNumber={group.accountNumber}
-          deposit={group.deposit}
-        />
+        <GroupItem key={group.account} group={group} />
       ))}
     </GroupListWrapper>
   );
