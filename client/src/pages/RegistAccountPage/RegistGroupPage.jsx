@@ -1,6 +1,7 @@
 import useForm from "hooks/useForm";
 import * as S from "./RegistGroupPage.style";
 import { useSetGroupMutation } from "hooks/apiHook/useSetGroupMutation";
+import { Form } from "components/@common/Form/Form";
 
 const RegistGroupPage = () => {
   const intitialValue = {
@@ -25,7 +26,7 @@ const RegistGroupPage = () => {
     <S.RegistGroupPageWrapper>
       <S.RegistGroupText>모임통장 만들기</S.RegistGroupText>
       <S.InputWrapper>
-        <form onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <S.InputBox
             placeholder="모임 이름"
             type="text"
@@ -80,7 +81,7 @@ const RegistGroupPage = () => {
           <S.NextButton type="submit" onClick={handleSubmit}>
             다음
           </S.NextButton>
-        </form>
+        </Form>
       </S.InputWrapper>
     </S.RegistGroupPageWrapper>
   );

@@ -18,6 +18,7 @@ export const InputWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: space-around;
   gap: 3.5rem;
+  text-align: center;
 `;
 
 export const InputBox = styled.input`
