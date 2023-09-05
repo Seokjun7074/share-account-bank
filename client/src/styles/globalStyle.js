@@ -34,6 +34,8 @@ const GlobalStyle = createGlobalStyle`
     a,
     button {
         cursor: pointer;
+        text-decoration: none;
+        outline: none;
     }
 `;
 export default GlobalStyle;

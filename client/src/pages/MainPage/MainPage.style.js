@@ -14,3 +14,12 @@ export const LabelWrapper = styled(Flex)`
   color: ${({ theme }) => theme.color.darkgray};
   font-weight: bold;
 `;
+
+export const CreateGroupButton = styled(Button)`
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: ${({ theme }) => theme.fontSize.l};
+  font-weight: bold;
+  color: ${({ theme }) => theme.color.primary};
+  background-color: ${({ theme }) => theme.color.lightgray};
+`;
