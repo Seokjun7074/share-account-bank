@@ -6,7 +6,7 @@ import IntroPage from "pages/IntroPage/IntroPage";
 import LoginPage from "pages/LoginPage/LoginPage";
 import MainPage from "pages/MainPage/MainPage";
 import NotFoundPage from "pages/NotFoundPage/NotFoundPage";
-import RegistAccountPage from "pages/RegistAccountPage/RegistAccountPage";
+import RegistGroupPage from "pages/RegistAccountPage/RegistGroupPage";
 import SignUpPage from "pages/SignUpPage/SignUpPage";
 import TravelInfoPage from "pages/TravelInfoPage/TravelInfoPage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
@@ -28,7 +28,7 @@ const AppRouter = () => {
         },
         {
           path: "/regist-account",
-          element: <RegistAccountPage />,
+          element: <RegistGroupPage />,
         },
         {
           path: "/deposit/:groupId",

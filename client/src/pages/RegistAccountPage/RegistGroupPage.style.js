@@ -2,13 +2,13 @@ import { styled } from "styled-components";
 import Flex from "components/@common/Flex/Flex";
 import Button from "components/@common/Button/Button";
 
-export const RegistAccountPageWrapper = styled(Flex)`
+export const RegistGroupPageWrapper = styled(Flex)`
   flex-direction: column;
   height: 100vh;
   padding: 7rem 0;
   gap: 6rem;
 `;
-export const RegistAccountText = styled.span`
+export const RegistGroupText = styled.span`
   font-size: ${({ theme }) => theme.fontSize.l};
   color: ${({ theme }) => theme.color.darkgray};
   font-weight: bold;
