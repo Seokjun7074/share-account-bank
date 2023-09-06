@@ -1,18 +1,31 @@
+import { useCallback } from "react";
 import * as S from "./GroupDetail.style";
 
 const GroupDetail = ({ dues, duesDate, startDate, limitMember, participants }) => {
-  const title = { dues: "월회비", duesDate: "이체일", startDate: "여행 예정일", limitMember: "참여인원" };
-  const groupInfoDataPairs = Object.entries({ dues, duesDate, startDate, limitMember });
+  const changeDate = useCallback((startDate) => {
+    const splitedDate = startDate.split("-");
+    return splitedDate[0] + "년 " + splitedDate[1] + "월 " + splitedDate[2] + "일";
+  }, []);
 
   return (
     <S.GroupDetailWrapper>
       <S.GroupDetailTitle>모임 계좌 정보</S.GroupDetailTitle>
-      {groupInfoDataPairs.map(([key, value]) => (
-        <S.DetailContainer key={key}>
-          <S.DetailKey>{title[key]}</S.DetailKey>
-          <S.DetailValue>{value}</S.DetailValue>
-        </S.DetailContainer>
-      ))}
+      <S.DetailContainer>
+        <S.DetailKey>월회비</S.DetailKey>
+        <S.DetailValue>{dues}원</S.DetailValue>
+      </S.DetailContainer>
+      <S.DetailContainer>
+        <S.DetailKey>이체일</S.DetailKey>
+        <S.DetailValue>매월 {duesDate}일</S.DetailValue>
+      </S.DetailContainer>
+      <S.DetailContainer>
+        <S.DetailKey>여행 예정일</S.DetailKey>
+        <S.DetailValue>{changeDate(startDate)}</S.DetailValue>
+      </S.DetailContainer>
+      <S.DetailContainer>
+        <S.DetailKey>참여인원</S.DetailKey>
+        <S.DetailValue>{limitMember}명</S.DetailValue>
+      </S.DetailContainer>
     </S.GroupDetailWrapper>
   );
 };
