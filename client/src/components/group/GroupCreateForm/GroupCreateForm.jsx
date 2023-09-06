@@ -4,7 +4,7 @@ import useForm from "hooks/useForm";
 import * as S from "./GroupCreateForm.style";
 import { Form } from "components/@common/Form/Form";
 
-const GroupCreateForm = ({ accountList, setGroupMutation }) => {
+const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
   const intitialValue = {
     groupName: "", // 그룹 이름
     account: "", // 계좌 번호
@@ -48,7 +48,9 @@ const GroupCreateForm = ({ accountList, setGroupMutation }) => {
               </option>
             ))}
           </S.CustomSelect>
-          <S.CreateAccountButton type="button">계좌 생성</S.CreateAccountButton>
+          <S.CreateAccountButton type="button" onClick={openModal}>
+            계좌 생성
+          </S.CreateAccountButton>
         </S.SelectAccountBox>
         <LabelInput labelTitle="모임 이름" inputType="text" inputName="groupName" handler={handleregistForm} />
         {/* <LabelInput labelTitle="계좌" inputType="text" inputName="account" handler={handleregistForm} /> */}

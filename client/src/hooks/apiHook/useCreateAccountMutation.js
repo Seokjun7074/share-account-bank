@@ -1,14 +1,16 @@
 import { useMutation } from "@tanstack/react-query";
 import bankAPI from "apis/bank";
 
-export const useCreateAccountMutation = (userId) => {
-  const CreateAccountMutation = useMutation({
-    mutationFn: bankAPI.createAccount(userId),
+export const useCreateAccountMutation = () => {
+  const createAccountMutation = useMutation({
+    mutationFn: bankAPI.createAccount,
     onSuccess: (data) => {
       console.log(data);
     },
-    onError: () => {},
+    onError: () => {
+      alert("계좌 생성에 실패했습니다.");
+    },
   });
 
-  return CreateAccountMutation;
+  return createAccountMutation;
 };
