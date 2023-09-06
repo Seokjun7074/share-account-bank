@@ -20,7 +20,16 @@ const userAPI = {
   logout: () => axiosInstance.post("/logout"),
 
   editPassword: (id, name, password, passwordCheck) =>
-    accountTokenAxiosInstance.put("/password", { id, name, password, passwordCheck }),
+    accountTokenAxiosInstance.put("/password", {
+      id,
+      name,
+      password,
+      passwordCheck,
+    }),
+
+  sendEmail: (id) => axiosInstance.post("/email", id),
+
+  verifyCode: (code) => axiosInstance.post("/email/verification", code),
 };
 
 export default userAPI;
