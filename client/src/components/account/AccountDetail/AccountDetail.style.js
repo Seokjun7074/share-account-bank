@@ -24,7 +24,7 @@ export const Name = styled.span`
 `;
 export const Number = styled.span`
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: ${({ theme }) => theme.color.lightgray};
+  color: ${({ theme }) => theme.color.gray};
 `;
 
 export const MoneyContainer = styled(Flex)`

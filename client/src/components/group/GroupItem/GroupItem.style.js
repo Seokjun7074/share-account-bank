@@ -31,7 +31,7 @@ export const DepositContainer = styled(Flex)`
 
 export const GroupItemNumber = styled.span`
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: ${({ theme }) => theme.color.lightgray};
+  color: ${({ theme }) => theme.color.gray};
 `;
 export const Deposit = styled.span`
   font-size: ${({ theme }) => theme.fontSize.s};

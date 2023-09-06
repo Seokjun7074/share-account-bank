@@ -30,5 +30,5 @@ export const DetailKey = styled.span`
 `;
 
 export const DetailValue = styled(DetailKey)`
-  color: ${({ theme }) => theme.color.lightgray};
+  color: ${({ theme }) => theme.color.gray};
 `;
