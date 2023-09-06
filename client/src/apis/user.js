@@ -1,7 +1,7 @@
-import { axiosInstance, accountTokenAxiosInstance } from "./index";
+import { axiosInstance } from "./index";
 
 const userAPI = {
-  signup: (signupForm) => accountTokenAxiosInstance.post("/signup", signupForm),
+  signup: (signupForm) => axiosInstance.post("/signup", signupForm),
 
   login: (loginForm) => axiosInstance.post("/login", loginForm),
 
@@ -20,7 +20,7 @@ const userAPI = {
   logout: () => axiosInstance.post("/logout"),
 
   editPassword: (id, name, password, passwordCheck) =>
-    accountTokenAxiosInstance.put("/password", {
+    axiosInstance.put("/password", {
       id,
       name,
       password,

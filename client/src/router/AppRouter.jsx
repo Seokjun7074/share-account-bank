@@ -3,6 +3,7 @@ import Layout from "components/Layout/Layout";
 import AccountPage from "pages/AccountPage/AccountPage";
 import CalculationPage from "pages/CalculationPage/CalculationPage";
 import DepositPage from "pages/DepositPage/DepositPage";
+import GroupPage from "pages/GroupPage/GroupPage";
 import IntroPage from "pages/IntroPage/IntroPage";
 import InvitationPage from "pages/InvitationPage/InvitationPage";
 import LoginPage from "pages/LoginPage/LoginPage";
@@ -27,6 +28,10 @@ const AppRouter = () => {
         {
           path: "/account/:groupId",
           element: <AccountPage />,
+        },
+        {
+          path: "/group/:groupId",
+          element: <GroupPage />,
         },
         {
           path: "/regist-account",
