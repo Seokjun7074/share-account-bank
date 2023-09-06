@@ -7,10 +7,10 @@ const CreateAccountModal = ({ closeModal }) => {
   const createAccountMutation = useCreateAccountMutation();
 
   const handleCreateAccount = () => {
-    createAccountMutation.mutate("유저이메일");
+    createAccountMutation.mutate();
     console.log(createAccountMutation);
     if (createAccountMutation.isSuccess) {
-      setIsFinished(() => false);
+      setIsFinished(false);
     }
   };
 
