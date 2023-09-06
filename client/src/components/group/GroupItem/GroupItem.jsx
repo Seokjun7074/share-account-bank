@@ -1,9 +1,12 @@
 import ProgressBar from "components/@common/ProgressBar/ProgressBar";
 import * as S from "./GroupItem.style";
+import { useNavigate } from "react-router-dom";
+import { PATH } from "constants/path";
 
 const GroupItem = ({ group }) => {
+  const navigate = useNavigate();
   return (
-    <S.GroupItemWrapper>
+    <S.GroupItemWrapper onClick={() => navigate(PATH.GROUP_PAGE(group.account))}>
       <S.GroupItemNameContainer>
         <S.GroupItemName>{group.groupName}</S.GroupItemName>
       </S.GroupItemNameContainer>

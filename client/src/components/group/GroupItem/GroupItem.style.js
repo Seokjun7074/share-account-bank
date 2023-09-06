@@ -9,6 +9,7 @@ export const GroupItemWrapper = styled(Flex)`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.offwhite};
   justify-content: space-around;
+  cursor: pointer;
 `;
 
 export const GroupItemNameContainer = styled(Flex)`

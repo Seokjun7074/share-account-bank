@@ -27,11 +27,11 @@ const AppRouter = () => {
           element: <MainPage />,
         },
         {
-          path: PATH.ACCOUNT_PAGE("groupId"),
+          path: PATH.ACCOUNT_PAGE(":groupId"),
           element: <AccountPage />,
         },
         {
-          path: PATH.GROUP_PAGE("groupId"),
+          path: PATH.GROUP_PAGE(":groupId"),
           element: <GroupPage />,
         },
         {
@@ -39,15 +39,15 @@ const AppRouter = () => {
           element: <RegistGroupPage />,
         },
         {
-          path: PATH.DEPOSIT_PAGE("groupId"),
+          path: PATH.DEPOSIT_PAGE(":groupId"),
           element: <DepositPage />,
         },
         {
-          path: PATH.TRAVEL_INFO_PAGE("groupId"),
+          path: PATH.TRAVEL_INFO_PAGE(":groupId"),
           element: <TravelInfoPage />,
         },
         {
-          path: PATH.INVITATION_PAGE("groupId"),
+          path: PATH.INVITATION_PAGE(":groupId"),
           element: <InvitationPage />,
         },
       ],
@@ -70,7 +70,7 @@ const AppRouter = () => {
           element: <LoginPage />,
         },
         {
-          path: PATH.CALCULATION_PAGE("groupId"),
+          path: PATH.CALCULATION_PAGE(":groupId"),
           element: <CalculationPage />,
         },
       ],
