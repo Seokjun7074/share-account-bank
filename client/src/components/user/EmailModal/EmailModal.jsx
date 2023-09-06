@@ -1,8 +1,8 @@
 import { useState } from "react";
-import * as S from "./AccountModal.style";
+import * as S from "./EmailModal.style";
 import Flex from "components/@common/Flex/Flex";
 
-const AccountModal = ({ onClose, onVerify }) => {
+const EmailModal = ({ onClose, onVerify }) => {
   const [verificationCode, setVerificationCode] = useState("");
 
   const handleVerify = () => {
@@ -14,7 +14,7 @@ const AccountModal = ({ onClose, onVerify }) => {
       <S.ModalContainer>
         <h2>이메일 인증</h2>
         <h5 style={{ color: "red" }}>3분 안에 입력해주세요.</h5>
-        <S.AccountModalInput
+        <S.EmailModalInput
           type="text"
           placeholder="인증 번호 입력"
           value={verificationCode}
@@ -29,4 +29,4 @@ const AccountModal = ({ onClose, onVerify }) => {
   );
 };
 
-export default AccountModal;
+export default EmailModal;

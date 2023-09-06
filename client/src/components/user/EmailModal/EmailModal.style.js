@@ -24,7 +24,7 @@ export const ModalContainer = styled(Flex)`
   color: ${({ theme }) => theme.color.darkgray};
 `;
 
-export const AccountModalInput = styled.input`
+export const EmailModalInput = styled.input`
   width: 100%;
   padding: 1rem;
   margin-bottom: 10px;
