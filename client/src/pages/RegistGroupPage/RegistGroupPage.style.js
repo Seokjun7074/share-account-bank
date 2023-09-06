@@ -37,3 +37,21 @@ export const CustomSelect = styled(NativeSelect)`
   background-color: transparent;
   color: ${({ theme }) => theme.color.darkgray};
 `;
+
+export const SelectAccountBox = styled(Flex)`
+  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
+`;
+
+export const CreateAccountButton = styled(Button)`
+  width: 10rem;
+  color: ${({ theme }) => theme.color.primary};
+  font-size: 1.4rem;
+  font-weight: 600;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.color.primary};
+    color: white;
+  }
+`;

@@ -11,7 +11,7 @@ root.render(
   <ThemeProvider theme={theme}>
     <GlobalStyle />
     <App />
-  </ThemeProvider>
+  </ThemeProvider>,
 );
 
 // If you want your app to work offline and load faster, you can change

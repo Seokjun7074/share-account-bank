@@ -39,7 +39,6 @@ const RegistGroupPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(registForm);
-    return;
     // setGroupMutation.mutate(registForm);
   };
 
@@ -48,27 +47,30 @@ const RegistGroupPage = () => {
       <S.RegistGroupText>모임통장 만들기</S.RegistGroupText>
       <S.InputWrapper>
         <Form onSubmit={handleSubmit}>
-          <S.CustomSelect
-            variant="standard"
-            inputProps={{
-              name: "account",
-            }}
-            onChange={handleregistForm}
-            sx={{
-              backgroundColor: "white",
-              fontSize: "1.6rem",
-              ":hover": {
-                backgroundColor: "inherit",
-              },
-            }}
-          >
-            <option value={""}>계좌번호</option>
-            {accountList.map((account) => (
-              <option key={account.accountId} value={account.accountId}>
-                {account.accountId}
-              </option>
-            ))}
-          </S.CustomSelect>
+          <S.SelectAccountBox>
+            <S.CustomSelect
+              variant="standard"
+              inputProps={{
+                name: "account",
+              }}
+              onChange={handleregistForm}
+              sx={{
+                backgroundColor: "white",
+                fontSize: "1.6rem",
+                ":hover": {
+                  backgroundColor: "inherit",
+                },
+              }}
+            >
+              <option value={""}>내 계좌</option>
+              {accountList.map((account) => (
+                <option key={account.accountId} value={account.accountId}>
+                  {account.accountId}
+                </option>
+              ))}
+            </S.CustomSelect>
+            <S.CreateAccountButton>계좌 생성</S.CreateAccountButton>
+          </S.SelectAccountBox>
           <LabelInput labelTitle="모임 이름" inputType="text" inputName="groupName" handler={handleregistForm} />
           {/* <LabelInput labelTitle="계좌" inputType="text" inputName="account" handler={handleregistForm} /> */}
 
