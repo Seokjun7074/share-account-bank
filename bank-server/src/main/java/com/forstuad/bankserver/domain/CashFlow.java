@@ -18,16 +18,17 @@ public class CashFlow {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long sender;
+    private String sender;
 
-    private Long receiver;
+    private String receiver;
 
     private int amount;
 
     private LocalDateTime dateTime;
 
     @Builder
-    public CashFlow(Long sender, Long receiver, int amount, LocalDateTime dateTime) {
+    public CashFlow(String sender, String receiver, int amount, LocalDateTime dateTime) {
+
         this.sender = sender;
         this.receiver = receiver;
         this.amount = amount;
