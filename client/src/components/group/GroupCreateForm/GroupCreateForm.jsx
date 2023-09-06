@@ -20,8 +20,7 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
   const [registForm, handleregistForm] = useForm(intitialValue);
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(registForm);
-    // setGroupMutation.mutate(registForm);
+    setGroupMutation.mutate(registForm);
   };
   return (
     <S.InputWrapper>
@@ -53,23 +52,22 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
           </S.CreateAccountButton>
         </S.SelectAccountBox>
         <LabelInput labelTitle="모임 이름" inputType="text" inputName="groupName" handler={handleregistForm} />
-        {/* <LabelInput labelTitle="계좌" inputType="text" inputName="account" handler={handleregistForm} /> */}
 
         <LabelInput labelTitle="목표금액" inputType="text" inputName="goal" handler={handleregistForm} />
         <LabelInput labelTitle="회비" inputType="text" inputName="dues" handler={handleregistForm} />
         <LabelInput
           labelTitle="자동이체일"
-          inputType="date"
+          inputType="number"
           inputName="duesDate"
           handler={handleregistForm}
-          option={{ value: currentDate }}
+          option={{ min: 1, max: 28 }}
         />
         <LabelInput
           labelTitle="여행예정일"
           inputType="date"
           inputName="startDate"
           handler={handleregistForm}
-          option={{ value: currentDate, min: currentDate }}
+          option={{ min: currentDate }}
         />
         <LabelInput labelTitle="참여인원" inputType="number" inputName="limitMember" handler={handleregistForm} />
         <LabelInput labelTitle="외화" inputType="text" inputName="money" handler={handleregistForm} />
