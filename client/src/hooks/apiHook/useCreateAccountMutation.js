@@ -6,8 +6,7 @@ export const useCreateAccountMutation = () => {
 
   const createAccountMutation = useMutation({
     mutationFn: bankAPI.createAccount,
-    onSuccess: (data) => {
-      console.log(data);
+    onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["accountList"] });
     },
     onError: () => {

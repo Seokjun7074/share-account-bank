@@ -7,19 +7,21 @@ const CreateAccountModal = ({ closeModal }) => {
   const createAccountMutation = useCreateAccountMutation();
 
   const handleCreateAccount = () => {
-    createAccountMutation.mutate();
-    console.log(createAccountMutation);
-    if (createAccountMutation.isSuccess) {
-      setIsFinished(false);
-    }
+    createAccountMutation.mutate(
+      {},
+      {
+        onSuccess: (data) => {
+          setIsFinished((isFinished) => !isFinished);
+        },
+      },
+    );
   };
-
   return (
     <S.CreateAccountModalWrapper>
       {isFinished ? (
         <>
           <S.CreateAccountModalTitle>계좌가 생성되었어요!</S.CreateAccountModalTitle>
-          {/* <span>{createAccountMutation.data?.account}</span> */}
+          <span>{createAccountMutation?.data.data.account.accountId}</span>
           <S.CreateButton onClick={closeModal}>확인</S.CreateButton>
         </>
       ) : (
