@@ -38,7 +38,9 @@ const MainPage = () => {
     <S.MainPageWrapper>
       <S.LabelWrapper>나의 모임 통장</S.LabelWrapper>
       <GroupList groupList={dummyGroupList} />
-      <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>+</S.CreateGroupButton>
+      <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>
+        +
+      </S.CreateGroupButton>
     </S.MainPageWrapper>
   );
 };
