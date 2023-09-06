@@ -1,5 +1,6 @@
 import HeaderLessLayout from "components/Layout/HeaderLessLayout/HeaderLessLayout";
 import Layout from "components/Layout/Layout";
+import { PATH } from "constants/path";
 import AccountPage from "pages/AccountPage/AccountPage";
 import CalculationPage from "pages/CalculationPage/CalculationPage";
 import DepositPage from "pages/DepositPage/DepositPage";
@@ -17,36 +18,36 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 const AppRouter = () => {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: PATH.ROOT,
       element: <Layout />,
       errorElement: <NotFoundPage />,
       children: [
         {
-          path: "/",
+          path: PATH.ROOT,
           element: <MainPage />,
         },
         {
-          path: "/account/:groupId",
+          path: PATH.ACCOUNT_PAGE("groupId"),
           element: <AccountPage />,
         },
         {
-          path: "/group/:groupId",
+          path: PATH.GROUP_PAGE("groupId"),
           element: <GroupPage />,
         },
         {
-          path: "/regist-account",
+          path: PATH.REGIST_GROUP_PAGE,
           element: <RegistGroupPage />,
         },
         {
-          path: "/deposit/:groupId",
+          path: PATH.DEPOSIT_PAGE("groupId"),
           element: <DepositPage />,
         },
         {
-          path: "/travelInfo/:groupId",
+          path: PATH.TRAVEL_INFO_PAGE("groupId"),
           element: <TravelInfoPage />,
         },
         {
-          path: "/invite/:groupId",
+          path: PATH.INVITATION_PAGE("groupId"),
           element: <InvitationPage />,
         },
       ],
@@ -57,19 +58,19 @@ const AppRouter = () => {
       errorElement: <NotFoundPage />,
       children: [
         {
-          path: "/intro",
+          path: PATH.INTRO_PAGE,
           element: <IntroPage />,
         },
         {
-          path: "/signup",
+          path: PATH.SIGNUP_PAGE,
           element: <SignUpPage />,
         },
         {
-          path: "/login",
+          path: PATH.LOGIN_PAGE,
           element: <LoginPage />,
         },
         {
-          path: "/calculation/:groudId",
+          path: PATH.CALCULATION_PAGE("groupId"),
           element: <CalculationPage />,
         },
       ],
