@@ -6,14 +6,17 @@ export const ReceiptWrapper = styled(Flex)`
   width: 100%;
   padding: 3rem;
   background-color: ${({ theme }) => theme.color.white};
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.2);
   color: ${({ theme }) => theme.color.darkgray};
+  background: #fffef0;
 `;
+
 export const ReceiptCol = styled(Flex)`
   justify-content: space-between;
   border-bottom: 1px dashed ${({ theme }) => theme.color.gray};
   padding-bottom: 0.5rem;
 `;
+
 export const ReceiptHeader = styled(Flex)`
   flex-direction: column;
   justify-content: start;
@@ -40,11 +43,13 @@ export const ReceiptContent = styled(Flex)`
   justify-content: space-between;
   color: ${({ theme }) => theme.color.gray};
 `;
+
 export const ImageContainer = styled(Flex)`
   position: relative;
   bottom: 10px;
   justify-content: end;
 `;
+
 export const PaidIcon = styled.img`
   width: 35%;
 `;
