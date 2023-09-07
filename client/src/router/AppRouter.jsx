@@ -28,7 +28,7 @@ const AppRouter = () => {
           element: <MainPage />,
         },
         {
-          path: PATH.ACCOUNT_PAGE(":groupId"),
+          path: PATH.ACCOUNT_PAGE(":accountNumber"),
           element: <AccountPage />,
         },
         {

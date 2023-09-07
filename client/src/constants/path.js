@@ -3,7 +3,7 @@ export const PATH = {
   INTRO_PAGE: "/intro",
   SIGNUP_PAGE: "/signup",
   LOGIN_PAGE: "/login",
-  ACCOUNT_PAGE: (groupId) => `/account/${groupId}`,
+  ACCOUNT_PAGE: (accountNumber) => `/account/${accountNumber}`,
   GROUP_PAGE: (groupId) => `/group/${groupId}`,
   REGIST_GROUP_PAGE: "/regist-account",
   DEPOSIT_PAGE: (groupId) => `/deposit/${groupId}`,

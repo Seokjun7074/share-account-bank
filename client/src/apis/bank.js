@@ -13,7 +13,7 @@ const bankAPI = {
 
   getAccountList: () => axiosInstance.get("/accounts"),
 
-  getAccount: (accountId) => axiosInstance.get(`/accounts/${accountId}`),
+  getAccount: (accountNumber) => axiosInstance.get(`/accounts/${accountNumber}`),
 
   getExchangeRate: () => axiosInstance.get("/exchangeRate"),
 

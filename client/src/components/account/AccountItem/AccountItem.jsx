@@ -20,6 +20,7 @@ const AccountItem = ({ accountId, balance, openModal }) => {
           <S.AccountItemNumber>{accountId}</S.AccountItemNumber>
           <S.Deposit>{balance}원</S.Deposit>
         </S.DepositContainer>
+        ㅌ
         <S.AccountButtonContainer>
           <S.DetailButton onClick={handleSelectAccount}>이체</S.DetailButton>
           <S.DetailButton onClick={() => navigate(PATH.ACCOUNT_PAGE(accountId))}>조회</S.DetailButton>
