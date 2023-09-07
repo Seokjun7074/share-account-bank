@@ -3,6 +3,7 @@ import Flex from "components/@common/Flex/Flex";
 import { styled } from "styled-components";
 
 export const DepositModalWrapper = styled(Flex)`
+  min-width: 30rem;
   width: 100%;
   height: 100%;
   flex-direction: column;

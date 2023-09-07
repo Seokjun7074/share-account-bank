@@ -15,7 +15,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const { groupListData } = useGroupListQuery();
   const { accountListData } = useAccountListQuery();
-  const { openModal } = useModal("accountId");
+  const { openModal, closeModal } = useModal("accountId");
   const selectedMyAccount = useRecoilValue(selectedMyAccountState);
 
   return (
@@ -27,7 +27,7 @@ const MainPage = () => {
         <GroupList groupList={groupListData?.data} />
         <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>+</S.CreateGroupButton>
         <Modal id="accountId">
-          <DepositModal selectedMyAccount={selectedMyAccount} />
+          <DepositModal selectedMyAccount={selectedMyAccount} closeModal={closeModal} />
         </Modal>
       </S.MainPageWrapper>
     </>
