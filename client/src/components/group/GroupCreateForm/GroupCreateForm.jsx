@@ -3,6 +3,8 @@ import LabelInput from "components/@common/LabelInput/LabelInput";
 import useForm from "hooks/useForm";
 import * as S from "./GroupCreateForm.style";
 import { Form } from "components/@common/Form/Form";
+import { moneyName } from "constants/money";
+import { MdAirplanemodeActive } from "react-icons/md";
 
 const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
   const intitialValue = {
@@ -17,11 +19,18 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
   };
 
   const [currentDate, setCurrentDate] = useState(new Date().toISOString().slice(0, 10));
+  const [flag, setFlag] = useState("");
   const [registForm, handleregistForm] = useForm(intitialValue);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setGroupMutation.mutate(registForm);
+    console.log(registForm);
+    // setGroupMutation.mutate(registForm);
   };
+  const handleFlag = (event) => {
+    handleregistForm(event);
+    setFlag(moneyName[event.target.value]);
+  };
+
   return (
     <S.InputWrapper>
       <Form onSubmit={handleSubmit}>
@@ -70,7 +79,25 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
           option={{ min: currentDate }}
         />
         <LabelInput labelTitle="참여인원" inputType="number" inputName="limitMember" handler={handleregistForm} />
-        <LabelInput labelTitle="외화" inputType="text" inputName="money" handler={handleregistForm} />
+        {/* <LabelInput labelTitle="외화" inputType="text" inputName="money" /> */}
+        <S.SelectAccountBox>
+          <S.InputLabel>외화</S.InputLabel>
+          <S.FlagContainer>
+            {!flag ? (
+              <MdAirplanemodeActive size={"2rem"} />
+            ) : (
+              <S.CountryFlagImage src={process.env.PUBLIC_URL + `/flag/${flag}.png`} />
+            )}
+            <select onChange={handleFlag} name="money">
+              <option defaultValue={null}>화폐선택</option>
+              {Object.keys(moneyName).map((money) => (
+                <option key={money} value={money}>
+                  {moneyName[money]}
+                </option>
+              ))}
+            </select>
+          </S.FlagContainer>
+        </S.SelectAccountBox>
         <S.NextButton type="submit" onClick={handleSubmit}>
           다음
         </S.NextButton>
