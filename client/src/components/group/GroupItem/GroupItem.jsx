@@ -2,6 +2,7 @@ import ProgressBar from "components/@common/ProgressBar/ProgressBar";
 import * as S from "./GroupItem.style";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "constants/path";
+import { setMoneyRegex } from "utils/regex";
 
 const GroupItem = ({ group }) => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const GroupItem = ({ group }) => {
       </S.GroupItemNameContainer>
       <S.DepositContainer>
         <S.GroupItemNumber>{group.account}</S.GroupItemNumber>
-        <S.Deposit>{group.balance}원</S.Deposit>
+        <S.Deposit>{setMoneyRegex(group.balance)}원</S.Deposit>
         <ProgressBar goalMoney={group.goal} currentMoney={group.balance} />
       </S.DepositContainer>
     </S.GroupItemWrapper>

@@ -1,5 +1,6 @@
 import Barcode from "components/@common/Barcode/Barcode";
 import * as S from "components/@common/Receipt/Receipt.style";
+import { setMoneyRegex } from "utils/regex";
 
 const Receipt = ({}) => {
   // console.log(accountData);
@@ -34,7 +35,7 @@ const Receipt = ({}) => {
       <S.ReceiptTitle>Receipt</S.ReceiptTitle>
       <S.ReceiptHeader>
         <h2>{accountData.accountId}</h2>
-        잔액 {accountData.balance}원
+        잔액 {setMoneyRegex(accountData.balance)}원
       </S.ReceiptHeader>
       <S.ReceiptContentContainer>
         <S.ReceiptContent>
@@ -46,7 +47,7 @@ const Receipt = ({}) => {
         {accountData.historyList.map((data, idx) => (
           <S.ReceiptContent key={idx}>
             <span>{data.sender}</span>
-            <span>{setPlusMinus(data.amount, data.type)}</span>
+            <span>{setPlusMinus(setMoneyRegex(data.amount), data.type)}</span>
           </S.ReceiptContent>
         ))}
       </S.ReceiptContentContainer>

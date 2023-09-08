@@ -1,5 +1,10 @@
 export const setMoneyRegex = (money) => {
-  return Number(money.replace(/[^0-9]/g, "").replaceAll(",", "")).toLocaleString();
+  return Number(
+    money
+      .toString()
+      .replace(/[^0-9]/g, "")
+      .replaceAll(",", ""),
+  ).toLocaleString();
 };
 
 export const setPhoneRegex = (phone) => {

@@ -5,6 +5,7 @@ import * as S from "./GroupCreateForm.style";
 import { Form } from "components/@common/Form/Form";
 import { moneyName } from "constants/money";
 import { MdAirplanemodeActive } from "react-icons/md";
+import { replaceComma, setMoneyRegex } from "utils/regex";
 
 const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
   const intitialValue = {
@@ -23,8 +24,10 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
   const [registForm, handleregistForm] = useForm(intitialValue);
   const handleSubmit = (e) => {
     e.preventDefault();
-    setGroupMutation.mutate(registForm);
+    const requestData = { ...registForm, dues: replaceComma(registForm.dues), goal: replaceComma(registForm.goal) };
+    setGroupMutation.mutate(requestData);
   };
+
   const handleFlag = (event) => {
     handleregistForm(event);
     setFlag(moneyName[event.target.value]);
@@ -61,8 +64,24 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
         </S.SelectAccountBox>
         <LabelInput labelTitle="모임 이름" inputType="text" inputName="groupName" handler={handleregistForm} />
 
-        <LabelInput labelTitle="목표금액" inputType="text" inputName="goal" handler={handleregistForm} />
-        <LabelInput labelTitle="회비" inputType="text" inputName="dues" handler={handleregistForm} />
+        <LabelInput
+          labelTitle="목표금액"
+          inputType="text"
+          inputName="goal"
+          handler={handleregistForm}
+          option={{
+            value: setMoneyRegex(registForm.goal),
+          }}
+        />
+        <LabelInput
+          labelTitle="회비"
+          inputType="text"
+          inputName="dues"
+          handler={handleregistForm}
+          option={{
+            value: setMoneyRegex(registForm.dues),
+          }}
+        />
         <LabelInput
           labelTitle="자동이체일"
           inputType="number"
@@ -78,7 +97,6 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
           option={{ min: currentDate }}
         />
         <LabelInput labelTitle="참여인원" inputType="number" inputName="limitMember" handler={handleregistForm} />
-        {/* <LabelInput labelTitle="외화" inputType="text" inputName="money" /> */}
         <S.SelectAccountBox>
           <S.InputLabel>외화</S.InputLabel>
           <S.FlagContainer>

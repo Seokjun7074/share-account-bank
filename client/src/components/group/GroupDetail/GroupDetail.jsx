@@ -1,5 +1,6 @@
 import { useCallback } from "react";
 import * as S from "./GroupDetail.style";
+import { setMoneyRegex } from "utils/regex";
 
 const GroupDetail = ({ dues, duesDate, startDate, limitMember, participants }) => {
   const changeDate = useCallback((startDate) => {
@@ -12,7 +13,7 @@ const GroupDetail = ({ dues, duesDate, startDate, limitMember, participants }) =
       <S.GroupDetailTitle>모임 계좌 정보</S.GroupDetailTitle>
       <S.DetailContainer>
         <S.DetailKey>월회비</S.DetailKey>
-        <S.DetailValue>{dues}원</S.DetailValue>
+        <S.DetailValue>{setMoneyRegex(dues)}원</S.DetailValue>
       </S.DetailContainer>
       <S.DetailContainer>
         <S.DetailKey>이체일</S.DetailKey>

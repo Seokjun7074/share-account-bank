@@ -1,7 +1,6 @@
 import * as S from "./LabelInput.style";
 
 const LabelInput = ({ labelTitle, inputType, inputName, handler, option }) => {
-  // const op = option.toString();
   return (
     <S.LabelContainer>
       <S.InputLabel>{labelTitle}</S.InputLabel>

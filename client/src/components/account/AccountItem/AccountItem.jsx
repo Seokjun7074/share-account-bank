@@ -3,6 +3,7 @@ import * as S from "./AccountItem.style";
 import { PATH } from "constants/path";
 import { useSetRecoilState } from "recoil";
 import { selectedMyAccountState } from "recoil/atoms";
+import { setMoneyRegex } from "utils/regex";
 
 const AccountItem = ({ accountId, balance, openModal }) => {
   const navigate = useNavigate();
@@ -18,7 +19,7 @@ const AccountItem = ({ accountId, balance, openModal }) => {
       <S.AccountItemWrapper>
         <S.DepositContainer>
           <S.AccountItemNumber>{accountId}</S.AccountItemNumber>
-          <S.Deposit>{balance}원</S.Deposit>
+          <S.Deposit>{setMoneyRegex(balance)}원</S.Deposit>
         </S.DepositContainer>
         <S.AccountButtonContainer>
           <S.DetailButton onClick={handleSelectAccount}>이체</S.DetailButton>

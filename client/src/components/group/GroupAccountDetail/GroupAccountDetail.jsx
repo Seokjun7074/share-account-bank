@@ -1,5 +1,6 @@
 import ProgressBar from "components/@common/ProgressBar/ProgressBar";
 import * as S from "./GroupAccountDetail.style";
+import { setMoneyRegex } from "utils/regex";
 
 const GroupAccountDetail = ({ groupName, account, goal, balance, money }) => {
   return (
@@ -9,7 +10,7 @@ const GroupAccountDetail = ({ groupName, account, goal, balance, money }) => {
         <S.Number>{account}</S.Number>
       </S.InfoContainer>
       <S.MoneyContainer>
-        <S.Money>{balance}원</S.Money>
+        <S.Money>{setMoneyRegex(balance)}원</S.Money>
         <select name="국가">
           <option value="USD">USD</option>
           <option value="KOW">KOW</option>
