@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import StoreList from "components/exchangeStore/StoreList/StoreList";
 import StoreMap from "components/exchangeStore/Map/StoreMap";
-import { ModalContent, VisibleModal } from "components/exchangeStore/Map/StoreMap.style";
 import SearchBar from "components/exchangeStore/SearchBar/SearchBar";
 import * as S from "pages/ExchangeMoneyStorePage/ExchangeMoneyStorePage.style";
+import useModal from "hooks/useModal";
+import Modal from "components/@common/Modal/Modal";
 
 const ExchangeMoneyStorePage = () => {
   const [info, setInfo] = useState();
@@ -11,8 +12,9 @@ const ExchangeMoneyStorePage = () => {
   const [lng, setLng] = useState(0);
   const [location, setLocation] = useState();
   const [stores, setStores] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
   const [where, setWhere] = useState();
+
+  const { openModal, closeModal } = useModal();
 
   const search = (word) => {
     const { kakao } = window;
@@ -32,14 +34,11 @@ const ExchangeMoneyStorePage = () => {
   };
 
   const handleListItemClick = (store) => {
-    setModalVisible(true);
+    // setModalVisible(true);
+    openModal();
     setInfo(store);
   };
 
-  const closeModal = () => {
-    // 모달을 닫는 함수
-    setModalVisible(false);
-  };
   const handleLocationChange = (event) => {
     setWhere(event.target.value);
   };
@@ -85,17 +84,15 @@ const ExchangeMoneyStorePage = () => {
   }, [location]);
 
   return (
-    <S.MoneyStroeWrapper>
-      <SearchBar value={where} onChange={handleLocationChange} onSearch={handleSearchIconClick}></SearchBar>
-      {location ? <StoreList stores={stores} onListItemClick={handleListItemClick} /> : <h1>loading..</h1>}
-      {modalVisible ? (
-        <VisibleModal>
-          <ModalContent>
-            {modalVisible && <StoreMap x={info.x} y={info.y} text={info.place_name} onClose={closeModal} />}
-          </ModalContent>
-        </VisibleModal>
-      ) : null}
-    </S.MoneyStroeWrapper>
+    <>
+      <S.MoneyStroeWrapper>
+        <SearchBar value={where} onChange={handleLocationChange} onSearch={handleSearchIconClick}></SearchBar>
+        {location ? <StoreList stores={stores} onListItemClick={handleListItemClick} /> : <h1>loading..</h1>}
+      </S.MoneyStroeWrapper>
+      <Modal>
+        <StoreMap x={info?.x} y={info?.y} text={info?.place_name} onClose={closeModal} />
+      </Modal>
+    </>
   );
 };
 

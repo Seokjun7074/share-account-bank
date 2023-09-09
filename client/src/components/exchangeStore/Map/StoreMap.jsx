@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { LeftButton, RightButton, ModalButtonWrapper } from "./StoreMap.style";
+import * as S from "./StoreMap.style";
 
 const StoreMap = ({ x, y, text, onClose }) => {
   useEffect(() => {
@@ -17,21 +17,19 @@ const StoreMap = ({ x, y, text, onClose }) => {
       marker: marker,
     };
 
-    const map = new kakao.maps.StaticMap(mapContainer, mapOption);
+    new kakao.maps.StaticMap(mapContainer, mapOption);
 
     return;
   }, [x, y]);
 
   return (
-    <div className="modal">
-      <div className="modal-content">
-        <div id="modalMap" style={{ width: "100%", height: "300px" }}></div>
-        <ModalButtonWrapper>
-          <LeftButton onClick={onClose}>닫기</LeftButton>
-          <RightButton onClick={onClose}>신청</RightButton>
-        </ModalButtonWrapper>
-      </div>
-    </div>
+    <S.StoreModlaWrapper>
+      <S.MapContainer id="modalMap"></S.MapContainer>
+      <S.ModalButtonWrapper>
+        <S.LeftButton onClick={onClose}>닫기</S.LeftButton>
+        <S.RightButton onClick={onClose}>신청</S.RightButton>
+      </S.ModalButtonWrapper>
+    </S.StoreModlaWrapper>
   );
 };
 
