@@ -7,6 +7,7 @@ const Receipt = ({ accountData, children }) => {
     if (type === "send") return "- " + amount;
     if (type === "received") return "+ " + amount;
   };
+  // console.log(accountData);
 
   return (
     <S.ReceiptWrapper>
@@ -34,11 +35,7 @@ const Receipt = ({ accountData, children }) => {
         <S.PaidIcon src={process.env.PUBLIC_URL + "/image/paid.png"} />
       </S.ImageContainer>
       <Barcode />
-      {accountData.startDate && accountData.endDate ? (
-        <S.NumberList>
-          {accountData.startDate}~{accountData.endDate}
-        </S.NumberList>
-      ) : null}
+      {accountData.startDate ? <S.NumberList>{accountData.startDate}</S.NumberList> : null}
     </S.ReceiptWrapper>
   );
 };
