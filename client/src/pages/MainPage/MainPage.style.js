@@ -17,6 +17,7 @@ export const LabelWrapper = styled(Flex)`
   position: sticky;
   top: 6rem;
   padding: 1rem 0;
+  border-bottom: 1px solid ${({ theme }) => theme.color.lightgray};
 `;
 
 export const CreateGroupButton = styled(Button)`

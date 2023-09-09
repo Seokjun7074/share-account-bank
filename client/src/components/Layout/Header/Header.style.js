@@ -9,7 +9,6 @@ export const HeaderWrapper = styled(Flex)`
   top: 0;
   background-color: ${({ theme }) => theme.color.white};
   /* border-bottom: 1px solid rgba(0, 27, 55, 0.1); */
-  z-index: 10;
 `;
 
 export const BackButtonContainer = styled(Flex)`
