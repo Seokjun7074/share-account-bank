@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { LeftButton, RightButton, ModalButtonWrapper } from "./StoreMap.style";
-import { colors } from "@mui/material";
 
 const StoreMap = ({ x, y, text, onClose }) => {
   useEffect(() => {

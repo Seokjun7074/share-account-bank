@@ -1,8 +1,10 @@
 import { useState, useEffect } from "react";
 import StoreList from "components/exchangeStore/StoreList/StoreList";
 import StoreMap from "components/exchangeStore/Map/StoreMap";
-import { ModalContainer, ModalContent, VisibleModal } from "components/exchangeStore/Map/StoreMap.style";
+import { ModalContent, VisibleModal } from "components/exchangeStore/Map/StoreMap.style";
 import SearchBar from "components/exchangeStore/SearchBar/SearchBar";
+import * as S from "pages/ExchangeMoneyStorePage/ExchangeMoneyStorePage.style";
+
 const ExchangeMoneyStorePage = () => {
   const [info, setInfo] = useState();
   const [lat, setLat] = useState(0);
@@ -41,8 +43,8 @@ const ExchangeMoneyStorePage = () => {
   const handleLocationChange = (event) => {
     setWhere(event.target.value);
   };
-  const handleSearchIconClick = () => {
-    // setLocation(where);
+  const handleSearchIconClick = (e) => {
+    e.preventDefault();
     search(where);
   };
 
@@ -77,19 +79,15 @@ const ExchangeMoneyStorePage = () => {
 
     ps.keywordSearch(location + " 신한은행", (result, status, _pagination) => {
       const newStores = [...stores];
-
-      for (var i = 0; i < result.length; i++) {
-        newStores.push(result[i]);
-      }
-      console.log(location + " 신한은행");
+      result.forEach((item, idx) => newStores.push(result[idx]));
       setStores(newStores);
     });
   }, [location]);
 
   return (
-    <div>
+    <S.MoneyStroeWrapper>
       <SearchBar value={where} onChange={handleLocationChange} onSearch={handleSearchIconClick}></SearchBar>
-      <StoreList stores={stores} onListItemClick={handleListItemClick} />{" "}
+      {location ? <StoreList stores={stores} onListItemClick={handleListItemClick} /> : <h1>loading..</h1>}
       {modalVisible ? (
         <VisibleModal>
           <ModalContent>
@@ -97,7 +95,7 @@ const ExchangeMoneyStorePage = () => {
           </ModalContent>
         </VisibleModal>
       ) : null}
-    </div>
+    </S.MoneyStroeWrapper>
   );
 };
 
