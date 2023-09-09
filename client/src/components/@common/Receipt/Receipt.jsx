@@ -3,8 +3,6 @@ import * as S from "components/@common/Receipt/Receipt.style";
 import { setMoneyRegex } from "utils/regex";
 
 const Receipt = ({ accountData, children }) => {
-  // console.log(accountData);
-
   const setPlusMinus = (amount, type) => {
     if (type === "send") return "- " + amount;
     if (type === "received") return "+ " + amount;
@@ -14,7 +12,7 @@ const Receipt = ({ accountData, children }) => {
     <S.ReceiptWrapper>
       <S.ReceiptTitle>Receipt</S.ReceiptTitle>
       <S.ReceiptHeader>
-        <h2>{accountData.accountId}</h2>
+        <h2>{accountData.accountNumber}</h2>
         <span>잔액 {setMoneyRegex(accountData.balance)}원</span>
         {children}
       </S.ReceiptHeader>

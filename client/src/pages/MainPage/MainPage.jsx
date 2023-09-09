@@ -22,7 +22,7 @@ const MainPage = () => {
   const [mainAccount, setMainAccount] = useState({});
 
   const findMainAccount = (responseData) => {
-    const findedData = responseData?.filter((item) => item.representedAccount);
+    const findedData = responseData?.filter((item) => item.represented);
     return findedData;
   };
 
@@ -34,7 +34,7 @@ const MainPage = () => {
     <>
       <S.MainPageWrapper>
         <S.LabelWrapper>내 주 계좌</S.LabelWrapper>
-        {mainAccount.accountId ? (
+        {mainAccount?.accountId ? (
           <AccountItem
             key={mainAccount?.accountId}
             accountId={mainAccount?.accountId}
