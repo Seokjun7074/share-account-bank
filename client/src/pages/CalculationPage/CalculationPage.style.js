@@ -18,6 +18,7 @@ export const CalculationMessage = styled.span`
 export const CalculationImageContainer = styled(Flex)`
   margin: 0 auto;
   width: 60%;
+  cursor: pointer;
 `;
 
 export const CalculationImage = styled.img`
