@@ -41,7 +41,7 @@ export const CreateMainAccountContainer = styled(Flex)`
 `;
 export const CreateMainAccountButtonContainer = styled(Flex)`
   color: ${({ theme }) => theme.color.darkgray};
-
+  cursor: pointer;
   &:hover {
     color: ${({ theme }) => theme.color.primary};
   }

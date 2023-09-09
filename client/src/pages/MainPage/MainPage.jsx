@@ -13,17 +13,19 @@ import { selectedMyAccountState } from "recoil/atoms";
 import DepositModal from "components/account/DepositModal/DepositModal";
 import { useEffect, useState } from "react";
 import AccountItem from "components/account/AccountItem/AccountItem";
+import MainAccountModal from "components/account/MainAccountModal/MainAccountModal";
 
 const MainPage = () => {
   const navigate = useNavigate();
   const { groupListData } = useGroupListQuery();
   const { accountListData } = useAccountListQuery();
-  const { openModal, closeModal } = useModal("accountId");
+  const { openModal: openDepositModal, closeModal: closeDepositModal } = useModal("deposit");
+  const { openModal: openCreateAccountModal, closeModal: closeCreateAccountModal } = useModal("createMainAccount");
   const selectedMyAccount = useRecoilValue(selectedMyAccountState);
   const [mainAccount, setMainAccount] = useState({});
 
   const findMainAccount = (responseData) => {
-    const findedData = responseData?.filter((item) => item.represented);
+    const findedData = responseData?.filter((item) => item.representedAccount);
     return findedData;
   };
 
@@ -40,25 +42,28 @@ const MainPage = () => {
             key={mainAccount?.accountId}
             accountId={mainAccount?.accountId}
             balance={mainAccount?.balance}
-            openModal={openModal}
+            openModal={openDepositModal}
           />
         ) : (
           <S.CreateMainAccountContainer>
             <h3>주계좌가 없습니다.</h3>
-            <S.CreateMainAccountButtonContainer>
+            <S.CreateMainAccountButtonContainer onClick={openCreateAccountModal}>
               <S.CreateMainAccountButton>주계좌 설정하러가기</S.CreateMainAccountButton>
               <MdCreditCard />
             </S.CreateMainAccountButtonContainer>
           </S.CreateMainAccountContainer>
         )}
         <S.LabelWrapper>내 계좌</S.LabelWrapper>
-        <AccountList accountList={accountListData?.data} openModal={openModal} />
+        <AccountList accountList={accountListData?.data} openModal={openDepositModal} />
         <S.LabelWrapper>내 모임 계좌</S.LabelWrapper>
         <GroupList groupList={groupListData?.data} />
         <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>+</S.CreateGroupButton>
       </S.MainPageWrapper>
-      <Modal id="accountId">
-        <DepositModal selectedMyAccount={selectedMyAccount} closeModal={closeModal} />
+      <Modal id="deposit">
+        <DepositModal selectedMyAccount={selectedMyAccount} closeModal={closeDepositModal} />
+      </Modal>
+      <Modal id="createMainAccount">
+        <MainAccountModal accountList={accountListData?.data} closeModal={closeCreateAccountModal} />
       </Modal>
     </>
   );

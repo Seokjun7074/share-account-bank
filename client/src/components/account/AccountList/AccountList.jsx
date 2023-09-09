@@ -6,7 +6,7 @@ const AccountList = ({ accountList, openModal }) => {
   const [filteredAccount, setFilteredAccount] = useState();
 
   useEffect(() => {
-    const newData = accountList.filter((item) => !item.represented);
+    const newData = accountList.filter((item) => !item.representedAccount);
     setFilteredAccount(newData);
   }, [accountList]);
 
