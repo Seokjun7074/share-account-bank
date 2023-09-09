@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 export const TravelInfoPageWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: space-around;
-  height: 100vh;
+  height: calc(100vh - 6rem);
   padding: 9rem 0;
 `;
 
@@ -21,7 +21,7 @@ export const TravelInfoMessage = styled.span`
 `;
 
 export const TravelInfoText = styled(TravelInfoMessage)`
-  font-size: ${({ theme }) => theme.fontSize.s};
+  font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: 400;
 `;
 

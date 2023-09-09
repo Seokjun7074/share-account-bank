@@ -5,18 +5,23 @@ import { PATH } from "constants/path";
 import { setMoneyRegex } from "utils/regex";
 
 const GroupItem = ({ group }) => {
+  console.log(group);
   const navigate = useNavigate();
 
-  const handleNavigation = (isPaid, account) => {
-    if (isPaid) {
-      navigate(PATH.TRAVEL_INFO_PAGE(group.groupId), { state: { account } });
+  const handleNavigation = () => {
+    if (group.travel) {
+      alert("여행중");
+      return;
+    }
+    if (group.paid) {
+      navigate(PATH.TRAVEL_INFO_PAGE(group.groupId), { state: { group } });
       return;
     }
     navigate(PATH.DEPOSIT_PAGE(group.groupId), { state: { account: group.account, dues: group.dues } });
   };
 
   return (
-    <S.GroupItemWrapper onClick={() => handleNavigation(false, group.account)}>
+    <S.GroupItemWrapper onClick={handleNavigation}>
       <S.GroupItemNameContainer>
         <S.GroupItemName>{group.groupName}</S.GroupItemName>
       </S.GroupItemNameContainer>
