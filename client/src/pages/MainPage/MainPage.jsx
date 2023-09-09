@@ -1,4 +1,6 @@
 import { useNavigate } from "react-router-dom";
+import { useRecoilValue } from "recoil";
+import { MdCreditCard } from "react-icons/md";
 import * as S from "./MainPage.style";
 import GroupList from "components/group/GroupList/GroupList";
 import { PATH } from "constants/path";
@@ -7,7 +9,6 @@ import { useAccountListQuery } from "hooks/apiHook/useAccountListQuery";
 import AccountList from "components/account/AccountList/AccountList";
 import Modal from "components/@common/Modal/Modal";
 import useModal from "hooks/useModal";
-import { useRecoilValue } from "recoil";
 import { selectedMyAccountState } from "recoil/atoms";
 import DepositModal from "components/account/DepositModal/DepositModal";
 import { useEffect, useState } from "react";
@@ -33,7 +34,7 @@ const MainPage = () => {
   return (
     <>
       <S.MainPageWrapper>
-        <S.LabelWrapper>내 주 계좌</S.LabelWrapper>
+        <S.LabelWrapper>주계좌</S.LabelWrapper>
         {mainAccount?.accountId ? (
           <AccountItem
             key={mainAccount?.accountId}
@@ -42,7 +43,13 @@ const MainPage = () => {
             openModal={openModal}
           />
         ) : (
-          <h1>X</h1>
+          <S.CreateMainAccountContainer>
+            <h3>주계좌가 없습니다.</h3>
+            <S.CreateMainAccountButtonContainer>
+              <S.CreateMainAccountButton>주계좌 설정하러가기</S.CreateMainAccountButton>
+              <MdCreditCard />
+            </S.CreateMainAccountButtonContainer>
+          </S.CreateMainAccountContainer>
         )}
         <S.LabelWrapper>내 계좌</S.LabelWrapper>
         <AccountList accountList={accountListData?.data} openModal={openModal} />
