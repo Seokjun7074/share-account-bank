@@ -2,9 +2,11 @@ import ProgressBar from "components/@common/ProgressBar/ProgressBar";
 import * as S from "./GroupAccountDetail.style";
 import { setMoneyRegex } from "utils/regex";
 import { useStratTravelMutation } from "hooks/apiHook/useStratTravelMutation";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { PATH } from "constants/path";
 
 const GroupAccountDetail = ({ groupName, account, goal, balance, money }) => {
+  const navigate = useNavigate();
   const { groupId } = useParams();
   const stratTravelMutation = useStratTravelMutation(groupId);
 
@@ -29,7 +31,9 @@ const GroupAccountDetail = ({ groupName, account, goal, balance, money }) => {
       <ProgressBar goalMoney={goal} currentMoney={balance} />
       <S.GroupAccountButtonContainer>
         <S.GroupAccountButton onClick={handelStartTravel}>여행가기</S.GroupAccountButton>
-        <S.GroupAccountButton>환전 우대율 조회</S.GroupAccountButton>
+        <S.GroupAccountButton onClick={() => navigate(PATH.EXCHANGE_PAGE(groupId))}>
+          환전 우대율 조회
+        </S.GroupAccountButton>
       </S.GroupAccountButtonContainer>
     </S.GroupAccountDetailWrapper>
   );

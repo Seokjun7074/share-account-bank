@@ -8,6 +8,7 @@ import EmailModal from "components/user/EmailModal/EmailModal";
 import { MdAirplanemodeActive } from "react-icons/md";
 import businessAPI from "apis/business";
 import shinhanAPI from "apis/shinhan";
+import { setMoneyRegex } from "utils/regex";
 
 const ExchangeMoneyPage = () => {
   const groupId = useLocation().pathname.split("/exchange/")[1];
@@ -17,7 +18,7 @@ const ExchangeMoneyPage = () => {
   const [showModal, setShowModal] = useState(false);
   const [flag, setFlag] = useState("");
   const [balance, setBalance] = useState();
-  const [resultAmount, setResultAmount] = useState();
+  const [resultAmount, setResultAmount] = useState("예상환전금액");
 
   useEffect(() => {
     const groupAccountInfo = async () => {
@@ -76,11 +77,16 @@ const ExchangeMoneyPage = () => {
           <S.ValidateAccountButton onClick={sendAccountVerification}>인증</S.ValidateAccountButton>
         </S.ValidateAccountContiner>
         <S.MoneyContainer>
-          <S.InputBox placeholder="환전금액" type="text" value={exchangeAmount} onChange={exchangeAmountHandler} />
+          <S.InputBox
+            placeholder="환전금액"
+            type="text"
+            value={setMoneyRegex(exchangeAmount)}
+            onChange={exchangeAmountHandler}
+          />
           <S.InputAllMoneyButton onClick={inputAllMoney}>전액</S.InputAllMoneyButton>
         </S.MoneyContainer>
         <S.SelectAccountBox>
-          <S.InputBox disabled placeholder="예상환전금액" value={resultAmount} />
+          <S.InputBox disabled placeholder="예상환전금액" value={setMoneyRegex(resultAmount)} />
           <S.FlagContainer>
             {!flag ? (
               <MdAirplanemodeActive size={"2rem"} />
