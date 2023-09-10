@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 export const SignUpPageWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: space-between;
-  height: 100vh;
+  height: calc(100vh - 6rem);
   padding: 7rem 0;
   position: relative;
 `;
@@ -58,10 +58,12 @@ export const PasswordCheckText = styled.span`
 `;
 
 export const NextButton = styled(Button)`
+  padding: 1.5rem 2rem;
   width: 60%;
   background-color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.color.white};
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: ${({ theme }) => theme.fontSize.s};
+  font-weight: bold;
 `;
 
 // 종명

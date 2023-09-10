@@ -1,32 +1,31 @@
 import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { MdAirplanemodeActive } from "react-icons/md";
 import useInput from "hooks/useInput";
-import { useLocation } from "react-router-dom";
 import * as S from "./ExchangeMoneyPage.style";
 import { moneyName } from "constants/money";
-import { useEmailVerificationMutation, useEmailSendMutation } from "hooks/apiHook/useEmailMutation";
+import { useEmailVerificationMutation } from "hooks/apiHook/useEmailMutation";
 import EmailModal from "components/user/EmailModal/EmailModal";
-import { MdAirplanemodeActive } from "react-icons/md";
 import businessAPI from "apis/business";
 import shinhanAPI from "apis/shinhan";
 import { setMoneyRegex } from "utils/regex";
 
 const ExchangeMoneyPage = () => {
-  const groupId = useLocation().pathname.split("/exchange/")[1];
+  const { groupId } = useParams();
+  const verificationMutation = useEmailVerificationMutation();
   const [account, setAccount] = useState("");
   const [exchangeAmount, setExchangeAmount, exchangeAmountHandler] = useInput("");
-  const verificationMutation = useEmailVerificationMutation();
   const [showModal, setShowModal] = useState(false);
   const [flag, setFlag] = useState("");
-  const [balance, setBalance] = useState();
+  const [balance, setBalance] = useState("");
   const [resultAmount, setResultAmount] = useState("예상환전금액");
 
   useEffect(() => {
     const groupAccountInfo = async () => {
       try {
-        const response = await businessAPI.getGroup(groupId);
-        console.log(response);
-        setAccount(response.data.account);
-        setBalance(response.data.balance);
+        const { data } = await businessAPI.getGroup(groupId);
+        setAccount(data.account);
+        setBalance(data.balance);
       } catch {}
     };
     groupAccountInfo();
@@ -36,9 +35,9 @@ const ExchangeMoneyPage = () => {
     setShowModal(true);
   };
   const verifyAccountCode = (code) => {
-    verificationMutation.mutate({ code: code });
+    verificationMutation.mutate({ code });
   };
-  //-------------------------------
+
   const handleFlag = (event) => {
     setFlag(moneyName[event.target.value]);
     exchangeMoney(moneyName[event.target.value]);
@@ -49,7 +48,7 @@ const ExchangeMoneyPage = () => {
 
   const exchangeMoney = async (bill) => {
     try {
-      const request = {
+      const requestData = {
         dataHeader: {
           apikey: "2023_Shinhan_SSAFY_Hackathon",
         },
@@ -62,8 +61,7 @@ const ExchangeMoneyPage = () => {
           휴대폰번호: "0101111111",
         },
       };
-      const response = await shinhanAPI.getExpectedMoney(request);
-      console.log(exchangeAmount / Number(response.data.dataBody.원화예상금액) / exchangeAmount);
+      const response = await shinhanAPI.getExpectedMoney(requestData);
       setResultAmount(Math.floor(exchangeAmount / (Number(response.data.dataBody.원화예상금액) / exchangeAmount)));
     } catch {}
   };
@@ -105,7 +103,7 @@ const ExchangeMoneyPage = () => {
         </S.SelectAccountBox>
       </S.InputWrapper>
 
-      <S.NextButton>신청</S.NextButton>
+      <S.NextButton>환전 신청 지점 찾기</S.NextButton>
       <S.ModalOverlay $show={showModal} onClick={() => setShowModal(false)} />
       <S.ModalContainer $show={showModal}>
         <EmailModal
