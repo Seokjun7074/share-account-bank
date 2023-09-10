@@ -1,4 +1,3 @@
-import useInput from "hooks/useInput";
 import * as S from "./LoginPage.style";
 import { useLogInMutation } from "hooks/apiHook/useLogInMutation";
 import { Form } from "components/@common/Form/Form";
@@ -24,10 +23,10 @@ const LoginPage = () => {
           <S.InputBox placeholder="이메일" type="email" name="id" onChange={handleLoginData} />
           <S.InputBox placeholder="비밀번호" type="password" name="password" onChange={handleLoginData} />
         </Form>
-        <S.NextButton type="submit" onClick={submitSignUp}>
-          로그인
-        </S.NextButton>
       </S.InputWrapper>
+      <S.NextButton type="submit" onClick={submitSignUp}>
+        로그인
+      </S.NextButton>
     </S.LoginPageWrapper>
   );
 };
