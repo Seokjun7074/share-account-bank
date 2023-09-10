@@ -37,20 +37,7 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
     <S.InputWrapper>
       <Form onSubmit={handleSubmit}>
         <S.SelectAccountBox>
-          <S.CustomSelect
-            variant="standard"
-            inputProps={{
-              name: "account",
-            }}
-            onChange={handleregistForm}
-            sx={{
-              backgroundColor: "white",
-              fontSize: "1.6rem",
-              ":hover": {
-                backgroundColor: "inherit",
-              },
-            }}
-          >
+          <S.CustomSelect onChange={handleregistForm} name="account">
             <option value={""}>내 계좌</option>
             {accountList.map((account) => (
               <option key={account.accountId} value={account.accountId}>
