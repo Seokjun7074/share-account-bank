@@ -1,4 +1,5 @@
 import Flex from "components/@common/Flex/Flex";
+import { slideDown } from "constants/animation";
 import { styled } from "styled-components";
 
 export const ReceiptWrapper = styled(Flex)`
@@ -14,6 +15,7 @@ export const ReceiptWrapper = styled(Flex)`
   -webkit-mask: var(--mask);
   mask: var(--mask);
   background-color: #f1f1f1;
+  animation: ${slideDown} 0.6s ease-in-out;
 `;
 
 export const ReceiptCol = styled(Flex)`
