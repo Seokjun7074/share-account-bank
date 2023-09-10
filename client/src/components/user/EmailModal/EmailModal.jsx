@@ -1,31 +1,28 @@
-import { useState } from "react";
 import * as S from "./EmailModal.style";
-import Flex from "components/@common/Flex/Flex";
+import useInput from "hooks/useInput";
 
 const EmailModal = ({ onClose, onVerify }) => {
-  const [verificationCode, setVerificationCode] = useState("");
+  const [verificationCode, setVerificationCode, verificationCodeHandler] = useInput("");
 
   const handleVerify = () => {
     onVerify(verificationCode);
   };
 
   return (
-    <S.ModalWrapper>
-      <S.ModalContainer>
-        <h2>이메일 인증</h2>
-        <h5 style={{ color: "red" }}>3분 안에 입력해주세요.</h5>
-        <S.EmailModalInput
-          type="text"
-          placeholder="인증 번호 입력"
-          value={verificationCode}
-          onChange={(e) => setVerificationCode(e.target.value)}
-        />
-        <Flex>
-          <S.LeftButton onClick={handleVerify}>확인</S.LeftButton>
-          <S.RightButton onClick={onClose}>닫기</S.RightButton>
-        </Flex>
-      </S.ModalContainer>
-    </S.ModalWrapper>
+    <S.ModalContainer>
+      <h1>이메일 인증</h1>
+      <S.EmailModalSpan>3분 안에 입력해주세요.</S.EmailModalSpan>
+      <S.EmailModalInput
+        type="text"
+        placeholder="인증 번호 입력"
+        value={verificationCode}
+        onChange={verificationCodeHandler}
+      />
+      <S.ButtonContainer>
+        <S.LeftButton onClick={onClose}>닫기</S.LeftButton>
+        <S.RightButton onClick={handleVerify}>확인</S.RightButton>
+      </S.ButtonContainer>
+    </S.ModalContainer>
   );
 };
 
