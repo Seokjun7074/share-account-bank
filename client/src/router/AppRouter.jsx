@@ -18,6 +18,7 @@ import ExchangeMoneyPage from "pages/ExchangeMoneyPage/ExchangeMoneyPage";
 import ExchangeMoneyStorePage from "pages/ExchangeMoneyStorePage/ExchangeMoneyStorePage";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TripResultPage from "pages/TripResultPage/TripResultPage";
+import TravelingPage from "pages/TravelingPage/TravelingPage";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -69,6 +70,10 @@ const AppRouter = () => {
         {
           path: PATH.TRIPRESULT_PAGE(":groupId"),
           element: <TripResultPage />,
+        },
+        {
+          path: PATH.TRAVELING_PAGE(":groupId"),
+          element: <TravelingPage />,
         },
       ],
     },
