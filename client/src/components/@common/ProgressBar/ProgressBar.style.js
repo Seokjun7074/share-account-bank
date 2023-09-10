@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import Flex from "../Flex/Flex";
+import { slideRight } from "constants/animation";
 
 export const ProgressBarWrapper = styled(Flex)`
   width: 100%;
@@ -19,4 +20,5 @@ export const Bar = styled(Flex)`
   background-color: ${({ theme }) => theme.color.green};
   color: ${({ theme }) => theme.color.white};
   font-size: 1.2rem;
+  animation: ${slideRight} 1s ease-in-out;
 `;
