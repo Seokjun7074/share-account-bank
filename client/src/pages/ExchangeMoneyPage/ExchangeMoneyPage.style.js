@@ -26,7 +26,7 @@ export const InputWrapper = styled(Flex)`
 export const InputBox = styled.input`
   padding: 0.5rem 1rem;
   border-bottom: solid 1px ${({ theme }) => theme.color.darkgray};
-  width: 100%;
+  width: 70%;
 `;
 
 export const ValidateAccountContiner = styled(Flex)`
@@ -37,17 +37,11 @@ export const MoneyContainer = styled(Flex)`
   justify-content: space-between;
   width: 100%;
 `;
-export const ValidateAccountButton = styled(Button)`
-  width: 5rem;
-  color: ${({ theme }) => theme.color.primary};
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 0;
-`;
+
 export const InputAllMoneyButton = styled(Button)`
   width: 5rem;
   color: ${({ theme }) => theme.color.primary};
-  font-size: 1.2rem;
+  font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: bold;
   padding: 0;
 `;

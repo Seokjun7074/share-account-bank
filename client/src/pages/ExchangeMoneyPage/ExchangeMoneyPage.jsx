@@ -9,6 +9,9 @@ import EmailModal from "components/user/EmailModal/EmailModal";
 import businessAPI from "apis/business";
 import shinhanAPI from "apis/shinhan";
 import { setMoneyRegex } from "utils/regex";
+import useModal from "hooks/useModal";
+import Modal from "components/@common/Modal/Modal";
+import PasswordVerifyModal from "components/account/PasswordVerifyModal/PasswordVerifyModal";
 
 const ExchangeMoneyPage = () => {
   const { groupId } = useParams();
@@ -19,6 +22,7 @@ const ExchangeMoneyPage = () => {
   const [flag, setFlag] = useState("");
   const [balance, setBalance] = useState("");
   const [resultAmount, setResultAmount] = useState("예상환전금액");
+  const { openModal, closeModal } = useModal("checkPassword");
 
   useEffect(() => {
     const groupAccountInfo = async () => {
@@ -72,7 +76,7 @@ const ExchangeMoneyPage = () => {
       <S.InputWrapper>
         <S.ValidateAccountContiner>
           <S.InputBox disabled placeholder="계좌번호" type="email" value={account} />
-          <S.ValidateAccountButton onClick={sendAccountVerification}>인증</S.ValidateAccountButton>
+          <span>출금 계좌</span>
         </S.ValidateAccountContiner>
         <S.MoneyContainer>
           <S.InputBox
@@ -102,17 +106,10 @@ const ExchangeMoneyPage = () => {
           </S.FlagContainer>
         </S.SelectAccountBox>
       </S.InputWrapper>
-
-      <S.NextButton>환전 신청 지점 찾기</S.NextButton>
-      <S.ModalOverlay $show={showModal} onClick={() => setShowModal(false)} />
-      <S.ModalContainer $show={showModal}>
-        <EmailModal
-          onClose={() => setShowModal(false)}
-          onVerify={(code) => {
-            verifyAccountCode(code);
-          }}
-        />
-      </S.ModalContainer>
+      <S.NextButton onClick={openModal}>환전 신청 지점 찾기</S.NextButton>
+      <Modal id="checkPassword">
+        <PasswordVerifyModal closeModal={closeModal} />
+      </Modal>
     </S.SignUpPageWrapper>
   );
 };
