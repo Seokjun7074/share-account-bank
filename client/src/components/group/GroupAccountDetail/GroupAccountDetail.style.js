@@ -14,8 +14,11 @@ export const GroupAccountDetailWrapper = styled(Flex)`
 `;
 
 export const InfoContainer = styled(Flex)`
-  flex-direction: column;
-  align-items: start;
+  justify-content: space-between;
+`;
+
+export const ProgressBarContainer = styled(Flex)`
+  width: 60%;
 `;
 
 export const Name = styled.span`
@@ -38,12 +41,14 @@ export const Money = styled.span`
 `;
 export const GroupAccountButtonContainer = styled(Flex)`
   justify-content: space-around;
+  gap: 1rem;
 `;
 
 export const GroupAccountButton = styled(Button)`
+  width: 50%;
   color: ${({ theme }) => theme.color.darkgray};
   background-color: ${({ theme }) => theme.color.lightgray};
   font-size: ${({ theme }) => theme.fontSize.s};
   padding: 1rem 2rem;
-  /* font-weight: bold; */
+  font-weight: bold;
 `;
