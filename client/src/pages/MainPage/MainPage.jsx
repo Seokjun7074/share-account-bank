@@ -34,7 +34,7 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    const sortedArr = sortByRepresentedAccount(accountListData?.data.accountList);
+    const sortedArr = sortByRepresentedAccount(accountListData?.data.accountList).filter((item) => !item.group);
     setSortedAccountList(sortedArr);
   }, [accountListData]);
 
