@@ -14,7 +14,7 @@ const AccountList = ({ accountList, openModal }) => {
   const [havaMainAccount, setHaveMainAccount] = useState(true);
 
   const findMainAccount = (responseData) => {
-    const findedData = responseData?.find((item) => item.representedAccount);
+    const findedData = responseData?.find((item) => item.represented);
     if (findedData === undefined) return false;
     return true;
   };

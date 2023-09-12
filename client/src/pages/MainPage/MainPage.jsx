@@ -23,8 +23,8 @@ const MainPage = () => {
 
   const sortByRepresentedAccount = (arr) => {
     return arr.sort((a, b) => {
-      if (a.representedAccount && !b.representedAccount) return -1;
-      else if (!a.representedAccount && b.representedAccount) return 1;
+      if (a.represented && !b.represented) return -1;
+      else if (!a.represented && b.represented) return 1;
       else return 0;
     });
   };
@@ -34,7 +34,9 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    const sortedArr = sortByRepresentedAccount(accountListData?.data);
+    console.log(accountListData?.data.accountList);
+    const sortedArr = sortByRepresentedAccount(accountListData?.data.accountList);
+    console.log(sortedArr);
     setSortedAccountList(sortedArr);
   }, [accountListData]);
 
