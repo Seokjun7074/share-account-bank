@@ -20,7 +20,7 @@ const DepositPage = () => {
   const account = location.state.account;
   const dues = location.state.dues;
 
-  const nonGroupAccountList = accountListData?.data.filter((account) => account.group === false);
+  const nonGroupAccountList = accountListData?.data?.accountList.filter((account) => account.group === false);
 
   const transactMoney = () => {
     const transactData = { sender: pickedAccount, receiver: account, amount: dues };

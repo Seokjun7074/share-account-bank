@@ -34,26 +34,21 @@ const MainPage = () => {
   };
 
   useEffect(() => {
-    console.log(accountListData?.data.accountList);
     const sortedArr = sortByRepresentedAccount(accountListData?.data.accountList);
-    console.log(sortedArr);
     setSortedAccountList(sortedArr);
   }, [accountListData]);
 
   return (
     <>
-      <button onClick={handleToggle}>@</button>
       <S.MainPageWrapper>
+        <S.LabelWrapper>
+          <span>{accountToggle ? "내 계좌" : "내 모임 계좌"}</span>
+          <S.ChangeButton onClick={handleToggle}>{accountToggle ? "모임계좌 보기" : "내 계좌 보기"}</S.ChangeButton>
+        </S.LabelWrapper>
         {accountToggle ? (
-          <>
-            <S.LabelWrapper>내 계좌</S.LabelWrapper>
-            <AccountList accountList={sortesAccountList} openModal={openDepositModal} />
-          </>
+          <AccountList accountList={sortesAccountList} openModal={openDepositModal} />
         ) : (
-          <>
-            <S.LabelWrapper>내 모임 계좌</S.LabelWrapper>
-            <GroupList groupList={groupListData?.data} />
-          </>
+          <GroupList groupList={groupListData?.data} />
         )}
         <S.CreateGroupButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>+</S.CreateGroupButton>
       </S.MainPageWrapper>

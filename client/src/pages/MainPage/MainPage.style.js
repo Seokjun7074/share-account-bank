@@ -1,5 +1,6 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
+import { slideUp } from "constants/animation";
 import { styled } from "styled-components";
 
 export const MainPageWrapper = styled(Flex)`
@@ -8,8 +9,9 @@ export const MainPageWrapper = styled(Flex)`
   padding: 4rem 3rem;
   gap: 3rem;
 `;
+
 export const LabelWrapper = styled(Flex)`
-  justify-content: start;
+  justify-content: space-between;
   font-size: ${({ theme }) => theme.fontSize.m};
   color: ${({ theme }) => theme.color.darkgray};
   background-color: ${({ theme }) => theme.color.white};
@@ -20,6 +22,12 @@ export const LabelWrapper = styled(Flex)`
   border-bottom: 1px solid ${({ theme }) => theme.color.lightgray};
 `;
 
+export const ChangeButton = styled.button`
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.color.primary};
+  font-weight: bold;
+`;
+
 export const CreateGroupButton = styled(Button)`
   width: 100%;
   padding: 1rem 2rem;
@@ -28,27 +36,3 @@ export const CreateGroupButton = styled(Button)`
   color: ${({ theme }) => theme.color.primary};
   background-color: ${({ theme }) => theme.color.lightgray};
 `;
-//
-
-// export const CreateMainAccountContainer = styled(Flex)`
-//   flex-direction: column;
-//   width: 100%;
-//   min-height: 6rem;
-//   padding: 2rem;
-//   border-radius: 10px;
-//   background-color: ${({ theme }) => theme.color.offwhite};
-//   color: ${({ theme }) => theme.color.red};
-//   gap: 1rem;
-// `;
-// export const CreateMainAccountButtonContainer = styled(Flex)`
-//   color: ${({ theme }) => theme.color.darkgray};
-//   cursor: pointer;
-//   &:hover {
-//     color: ${({ theme }) => theme.color.primary};
-//   }
-// `;
-
-// export const CreateMainAccountButton = styled(Button)`
-//   font-size: ${({ theme }) => theme.fontSize.s};
-//   padding: 0.5rem 1rem;
-// `;

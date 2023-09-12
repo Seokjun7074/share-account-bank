@@ -5,8 +5,15 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-export const AccountListWrapper = styled.div`
+export const AccountListWrapper = styled(Flex)`
   width: 100%;
+  justify-content: space-between;
+  height: 17rem;
+`;
+export const AccountListContainer = styled.div`
+  width: calc(100% - 4rem);
+  border-radius: 10px;
+  overflow: hidden;
 `;
 
 export const StyledSlider = styled(Slider)`
