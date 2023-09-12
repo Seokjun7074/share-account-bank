@@ -22,6 +22,8 @@ const bankAPI = {
   postCalculation: (groupId) => axiosInstance.post(`/groups/${groupId}/calculation`),
 
   setMainAccount: (accountId) => axiosInstance.post("/accounts/main", { accountId }),
+
+  checkAccountHost: (accountsNumber) => axiosInstance.post("/accounts/host", accountsNumber),
 };
 
 export default bankAPI;

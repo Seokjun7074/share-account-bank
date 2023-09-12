@@ -23,6 +23,7 @@ export const ButtonContainer = styled(Flex)`
 `;
 
 export const CreateButton = styled(Button)`
+  width: 50%;
   padding: 0.8rem 2.2rem;
   font-size: ${({ theme }) => theme.fontSize.s};
   background-color: ${({ theme }) => theme.color.primary};
