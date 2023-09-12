@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 export const CalculationPageWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: space-around;
-  height: 100vh;
+  height: calc(100vh - 6rem);
   padding: 9rem 0;
 `;
 

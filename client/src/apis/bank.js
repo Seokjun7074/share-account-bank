@@ -9,7 +9,7 @@ const bankAPI = {
 
   transferAccount: () => axiosInstance.post("/accounts/verification"),
 
-  createAccount: (userId) => axiosInstance.post("/accounts", { userId }),
+  createAccount: (password) => axiosInstance.post("/accounts", { password }),
 
   getAccountList: () => axiosInstance.get("/accounts"),
 

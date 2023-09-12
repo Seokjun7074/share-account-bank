@@ -20,6 +20,7 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import TripResultPage from "pages/TripResultPage/TripResultPage";
 import TravelingPage from "pages/TravelingPage/TravelingPage";
 import TravelLogPage from "pages/TravelLogPage/TravelLogPage";
+import CreateAccountPage from "pages/CreateAccountPage/CreateAccountPage";
 
 const AppRouter = () => {
   const router = createBrowserRouter([
@@ -79,6 +80,10 @@ const AppRouter = () => {
         {
           path: PATH.TRAVEL_LOG_PAGE,
           element: <TravelLogPage />,
+        },
+        {
+          path: PATH.CREATE_ACCOUNT_PAGE,
+          element: <CreateAccountPage />,
         },
       ],
     },

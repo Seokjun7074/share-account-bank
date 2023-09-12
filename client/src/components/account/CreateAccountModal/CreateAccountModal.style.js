@@ -8,7 +8,7 @@ export const CreateAccountModalWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: space-between;
   gap: 3rem;
-  padding: 3rem;
+  padding: 2rem;
 `;
 
 export const CreateAccountModalTitle = styled.h3`
@@ -22,6 +22,7 @@ export const ButtonContainer = styled(Flex)`
 `;
 
 export const CreateButton = styled(Button)`
+  width: 50%;
   padding: 0.6rem 2.5rem;
   font-size: ${({ theme }) => theme.fontSize.s};
   background-color: ${({ theme }) => theme.color.primary};

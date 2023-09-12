@@ -7,7 +7,7 @@ import { moneyName } from "constants/money";
 import { MdAirplanemodeActive } from "react-icons/md";
 import { replaceComma, setMoneyRegex } from "utils/regex";
 
-const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
+const GroupCreateForm = ({ accountList, setGroupMutation }) => {
   const intitialValue = {
     groupName: "", // 그룹 이름
     account: "", // 계좌 번호
@@ -45,9 +45,9 @@ const GroupCreateForm = ({ accountList, setGroupMutation, openModal }) => {
               </option>
             ))}
           </S.CustomSelect>
-          <S.CreateAccountButton type="button" onClick={openModal}>
+          {/* <S.CreateAccountButton type="button" onClick={openModal}>
             계좌 생성
-          </S.CreateAccountButton>
+          </S.CreateAccountButton> */}
         </S.SelectAccountBox>
         <LabelInput labelTitle="모임 이름" inputType="text" inputName="groupName" handler={handleregistForm} />
 
