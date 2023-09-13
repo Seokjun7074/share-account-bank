@@ -17,6 +17,9 @@ const AccountItem = ({ accountId, balance, openModal }) => {
   return (
     <>
       <S.AccountItemWrapper>
+        <S.AccountHeader>
+          <span>Shinhan</span>
+        </S.AccountHeader>
         <S.DepositContainer>
           <S.AccountItemNumber>{accountId}</S.AccountItemNumber>
           <S.Deposit>{setMoneyRegex(balance)}원</S.Deposit>
