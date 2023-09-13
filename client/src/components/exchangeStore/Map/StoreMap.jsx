@@ -22,12 +22,17 @@ const StoreMap = ({ x, y, text, onClose }) => {
     return;
   }, [x, y]);
 
+  const handleExcgange = () => {
+    alert("환전 신청이 완료 되었습니다.");
+    onClose();
+  };
+
   return (
     <S.StoreModlaWrapper>
       <S.MapContainer id="modalMap"></S.MapContainer>
       <S.ModalButtonWrapper>
         <S.LeftButton onClick={onClose}>닫기</S.LeftButton>
-        <S.RightButton onClick={onClose}>신청</S.RightButton>
+        <S.RightButton onClick={handleExcgange}>신청</S.RightButton>
       </S.ModalButtonWrapper>
     </S.StoreModlaWrapper>
   );

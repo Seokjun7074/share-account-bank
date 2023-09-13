@@ -2,6 +2,7 @@ import Flex from "components/@common/Flex/Flex";
 import styled from "styled-components";
 
 export const StoreModlaWrapper = styled(Flex)`
+  width: 300px;
   padding: 2rem;
   flex-direction: column;
   gap: 2rem;
@@ -19,9 +20,11 @@ export const ModalButtonWrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin-top: 10px;
+  gap: 2rem;
 `;
 
 export const LeftButton = styled.button`
+  width: 50%;
   padding: 1rem 3rem;
   background-color: ${({ theme }) => theme.color.red};
   font-size: ${({ theme }) => theme.fontSize.s};
