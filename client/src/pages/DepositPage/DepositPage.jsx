@@ -4,6 +4,7 @@ import { useTransactionMutation } from "hooks/apiHook/useTransactionMutation";
 import { useState } from "react";
 import { useAccountListQuery } from "hooks/apiHook/useAccountListQuery";
 import { PATH } from "constants/path";
+import { toastError, toastSuccess } from "utils/toast";
 
 const DepositPage = () => {
   const CLICK_MESSAGE = "가방을 클릭해 회비를 모아주세요!";
@@ -28,11 +29,10 @@ const DepositPage = () => {
       { ...transactData },
       {
         onSuccess: () => {
+          toastSuccess("입금 완료!");
           navigate(PATH.GROUP_PAGE(groupId));
         },
-        onError: () => {
-          alert("입금 실패");
-        },
+        onError: () => toastError("입금 실패!"),
       },
     );
   };

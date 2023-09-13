@@ -3,6 +3,7 @@ import { useCreateAccountMutation } from "hooks/apiHook/useCreateAccountMutation
 import useInput from "hooks/useInput";
 import * as S from "pages/CreateAccountPage/CreateAccountPage.style";
 import { useState } from "react";
+import { toastError } from "utils/toast";
 
 const CreateAccountPage = () => {
   const [password, setPassword, passwordHandeler] = useInput();
@@ -21,7 +22,7 @@ const CreateAccountPage = () => {
 
   const handelStepIncrease = () => {
     if (step === 3 && password !== passwordCheck) {
-      alert("비밀번호가 달라요!");
+      toastError("비밀번호가 달라요!");
       return;
     }
     if (step === 3) handleCreateAccount();

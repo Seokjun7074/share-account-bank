@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import * as S from "./StoreMap.style";
+import { toastSuccess } from "utils/toast";
 
 const StoreMap = ({ x, y, text, onClose }) => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const StoreMap = ({ x, y, text, onClose }) => {
   }, [x, y]);
 
   const handleExcgange = () => {
-    alert("환전 신청이 완료 되었습니다.");
+    toastSuccess("환전 신청이 완료 되었습니다.");
     onClose();
   };
 

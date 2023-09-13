@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import bankAPI from "apis/bank";
+import { toastError } from "utils/toast";
 
 export const useCreateAccountMutation = () => {
   const queryClient = useQueryClient();
@@ -10,7 +11,7 @@ export const useCreateAccountMutation = () => {
       queryClient.invalidateQueries({ queryKey: ["accountList"] });
     },
     onError: () => {
-      alert("계좌 생성에 실패했습니다.");
+      toastError("계좌 생성에 실패했습니다.");
     },
   });
 

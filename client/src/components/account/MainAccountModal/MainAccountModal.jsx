@@ -1,6 +1,7 @@
 import * as S from "components/account/MainAccountModal/MainAccountModal.style";
 import { useSetMainAccountMutation } from "hooks/apiHook/useSetMainAccountMutation";
 import { useState } from "react";
+import { toastSuccess } from "utils/toast";
 
 const MainAccountModal = ({ accountList, closeModal }) => {
   const [selectedAccount, setSelectedAccount] = useState(null);
@@ -22,7 +23,7 @@ const MainAccountModal = ({ accountList, closeModal }) => {
     }
     setMainAccount.mutate(selectedAccount, {
       onSuccess: () => {
-        alert("주계좌 설정이 완료되었습니다.");
+        toastSuccess("주계좌 설정이 완료되었습니다.");
         closeModal();
       },
     });

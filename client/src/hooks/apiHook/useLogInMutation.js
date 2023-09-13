@@ -1,6 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import userAPI from "apis/user";
 import { PATH } from "constants/path";
+import { toastError } from "utils/toast";
 
 export const useLogInMutation = () => {
   const loginMutation = useMutation({
@@ -11,9 +12,7 @@ export const useLogInMutation = () => {
       sessionStorage.setItem("userEmail", variables.id);
       window.location.replace(PATH.ROOT);
     },
-    onError: () => {
-      alert("로그인 실패");
-    },
+    onError: () => toastError("로그인 실패"),
   });
 
   return loginMutation;

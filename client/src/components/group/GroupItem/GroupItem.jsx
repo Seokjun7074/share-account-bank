@@ -10,6 +10,7 @@ const GroupItem = ({ group }) => {
   const handleNavigation = () => {
     if (group.travel) {
       alert("여행중");
+      navigate(PATH.TRAVEL_INFO_PAGE(group.groupId), { state: { group } });
       return;
     }
     if (group.paid) {

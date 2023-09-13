@@ -7,6 +7,7 @@ import { useTransactionMutation } from "hooks/apiHook/useTransactionMutation";
 import useInput from "hooks/useInput";
 import { useState } from "react";
 import { replaceComma, setAccountRegex, setMoneyRegex } from "utils/regex";
+import { toastError, toastSuccess } from "utils/toast";
 
 const DepositModal = ({ selectedMyAccount, closeModal }) => {
   const queryClient = useQueryClient();
@@ -25,8 +26,7 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
       {
         onSuccess: () => handleTranscation(),
         onError: () => {
-          alert("비밀번호가 다릅니다!");
-          closeModal();
+          toastError("비밀번호가 다릅니다!");
         },
       },
     );
@@ -42,7 +42,7 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
       { ...requestData },
       {
         onSuccess: () => {
-          alert("송금완료!");
+          toastSuccess("송금완료!");
           closeModal();
           queryClient.invalidateQueries({ queryKey: ["accountList"] });
         },
