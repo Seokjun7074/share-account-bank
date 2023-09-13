@@ -57,6 +57,7 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
         setHost(data.userName);
         setStep((step) => step + 1);
       },
+      onError: () => toastError("잘못된 계좌번호 입니다."),
     });
   };
 

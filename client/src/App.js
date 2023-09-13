@@ -24,7 +24,7 @@ function App() {
           <RecoilRoot>
             <AppRouter />
             <ToastContainer
-              style={{ padding: "20px", zIndex: 20, fontWeight: "bold", marginBottom: "30px" }}
+              style={{ padding: "20px", zIndex: 1000, fontWeight: "bold", marginTop: "30px" }}
               hideProgressBar={true}
             />
           </RecoilRoot>
