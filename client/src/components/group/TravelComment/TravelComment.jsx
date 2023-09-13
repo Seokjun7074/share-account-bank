@@ -4,7 +4,7 @@ import { useTravelCommentMutation } from "hooks/apiHook/useTravelCommentMutation
 import useInput from "hooks/useInput";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { toastError } from "utils/toast";
+import { toastError, toastSuccess } from "utils/toast";
 
 const TravelComment = ({ groupId, closeModal }) => {
   const navigate = useNavigate();
@@ -24,11 +24,12 @@ const TravelComment = ({ groupId, closeModal }) => {
       { groupId, formData, config },
       {
         onSuccess: () => {
+          toastSuccess("여행 후기가 작성되었어요!");
           closeModal();
           navigate(PATH.ROOT);
         },
         onError: () => {
-          toastError("코멘트 작성 실패!");
+          toastError("여행 후기 작성 실패!");
           closeModal();
         },
       },

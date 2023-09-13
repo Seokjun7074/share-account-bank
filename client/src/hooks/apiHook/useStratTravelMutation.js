@@ -9,7 +9,7 @@ export const useStratTravelMutation = (groupId) => {
   const stratTravelMutation = useMutation({
     mutationFn: () => businessAPI.startTravel(groupId),
     onSuccess: () => {
-      navigate(PATH.TRIPRESULT_PAGE(groupId));
+      navigate(PATH.TRAVELING_PAGE(groupId));
     },
     onError: () => {
       alert("요청 전송 실패!");

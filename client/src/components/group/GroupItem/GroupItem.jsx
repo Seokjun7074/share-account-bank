@@ -9,8 +9,7 @@ const GroupItem = ({ group }) => {
 
   const handleNavigation = () => {
     if (group.travel) {
-      alert("여행중");
-      navigate(PATH.TRAVEL_INFO_PAGE(group.groupId), { state: { group } });
+      navigate(PATH.TRAVELING_PAGE(group.groupId));
       return;
     }
     if (group.paid) {

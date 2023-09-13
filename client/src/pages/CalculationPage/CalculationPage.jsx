@@ -5,6 +5,7 @@ import Modal from "components/@common/Modal/Modal";
 import * as S from "./CalculationPage.style";
 import useModal from "hooks/useModal";
 import { useState } from "react";
+import { toastError, toastSuccess } from "utils/toast";
 
 const CalculationPage = () => {
   const { groupId } = useParams();
@@ -13,10 +14,12 @@ const CalculationPage = () => {
   const [isFinish, setIsFinish] = useState(false);
 
   const handleCalulation = () => {
+    if (isFinish) return;
     calculationMutation.mutate(
       {},
       {
         onSuccess: () => {
+          toastSuccess("정산이 완료되었어요!");
           setIsFinish(true);
         },
       },
@@ -25,8 +28,8 @@ const CalculationPage = () => {
 
   const handleModal = () => {
     if (!isFinish) {
-      // alert("정산을 먼저 해주세요!");
-      // return;
+      toastError("정산을 먼저 해주세요!");
+      return;
     }
     openModal();
   };
