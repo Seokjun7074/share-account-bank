@@ -2,6 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import LabelInput from "components/@common/LabelInput/LabelInput";
 import * as S from "components/account/DepositModal/DepositModal.style";
 import { useAccountHostMutation } from "hooks/apiHook/useAccountHostMutation";
+import { useCheckAccountPasswordMutation } from "hooks/apiHook/useCheckAccountPasswordMutation";
 import { useTransactionMutation } from "hooks/apiHook/useTransactionMutation";
 import useInput from "hooks/useInput";
 import { useState } from "react";
@@ -11,11 +12,25 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
   const queryClient = useQueryClient();
   const transactMutation = useTransactionMutation();
   const accoutnMutation = useAccountHostMutation();
+  const checkAccountPasswordMutation = useCheckAccountPasswordMutation();
   const [targetAccount, setTargetAccount, targetAccountHandler] = useInput("");
   const [password, setPassword, passwordHandler] = useInput("");
   const [money, setMoney] = useState("");
   const [host, setHost] = useState("");
   const [step, setStep] = useState(1);
+
+  const handleCheckPassword = () => {
+    checkAccountPasswordMutation.mutate(
+      { account: selectedMyAccount, password },
+      {
+        onSuccess: () => handleTranscation(),
+        onError: () => {
+          alert("비밀번호가 다릅니다!");
+          closeModal();
+        },
+      },
+    );
+  };
 
   const handleTranscation = () => {
     const requestData = {
@@ -27,9 +42,11 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
       { ...requestData },
       {
         onSuccess: () => {
+          alert("송금완료!");
           closeModal();
           queryClient.invalidateQueries({ queryKey: ["accountList"] });
         },
+        onError: () => closeModal(),
       },
     );
   };
@@ -91,7 +108,7 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
             확인
           </S.CreateButton>
         )}
-        {step === 3 && <S.CreateButton onClick={handleTranscation}>송금하기</S.CreateButton>}
+        {step === 3 && <S.CreateButton onClick={handleCheckPassword}>송금하기</S.CreateButton>}
       </S.ButtonContainer>
     </S.DepositModalWrapper>
   );
