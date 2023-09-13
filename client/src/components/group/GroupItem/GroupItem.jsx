@@ -21,12 +21,15 @@ const GroupItem = ({ group }) => {
 
   return (
     <S.GroupItemWrapper onClick={handleNavigation}>
+      <S.GroupHeader>
+        <span>Shinhan</span>
+        <span>{group.groupName}</span>
+      </S.GroupHeader>
       <S.GroupItemNameContainer>
-        <S.GroupItemName>{group.groupName}</S.GroupItemName>
-      </S.GroupItemNameContainer>
-      <S.DepositContainer>
         <S.GroupItemNumber>{group.account}</S.GroupItemNumber>
         <S.Deposit>{setMoneyRegex(group.balance)}원</S.Deposit>
+      </S.GroupItemNameContainer>
+      <S.DepositContainer>
         <ProgressBar goalMoney={group.goal} currentMoney={group.balance} />
       </S.DepositContainer>
     </S.GroupItemWrapper>
