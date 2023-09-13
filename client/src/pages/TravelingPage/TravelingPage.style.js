@@ -45,27 +45,29 @@ export const TravelingButton = styled(Button)`
 
 export const ConfirmModalWrapper = styled(Flex)`
   width: 250px;
-  padding: 2rem 0;
+  padding: 2rem;
   flex-direction: column;
 `;
 
 export const ConfirmModalText = styled.span`
-  font-size: ${({ theme }) => theme.fontSize.m};
+  font-size: 1.6rem;
   font-weight: bold;
   padding: 2rem;
 `;
 
 export const InfoMessage = styled.span`
   font-size: 1.1rem;
-  padding: 0.5rem;
+  padding-bottom: 2rem;
 `;
 
 export const ButtonContainer = styled(Flex)`
   width: 100%;
   justify-content: space-around;
+  gap: 2rem;
 `;
 
 export const CancelButton = styled(Button)`
+  width: 50%;
   padding: 0.8rem 2rem;
   color: ${({ theme }) => theme.color.white};
   background-color: ${({ theme }) => theme.color.red};

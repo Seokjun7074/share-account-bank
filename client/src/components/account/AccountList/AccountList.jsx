@@ -53,7 +53,7 @@ const AccountList = ({ accountList, openModal }) => {
                 </S.CreateMainAccountContainer>
               </>
             )}
-            {accountList?.map((group) => (
+            {accountList?.map((group, idx) => (
               <AccountItem
                 key={group.accountId}
                 accountId={group.accountId}

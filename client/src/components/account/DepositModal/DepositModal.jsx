@@ -45,6 +45,7 @@ const DepositModal = ({ selectedMyAccount, closeModal }) => {
           toastSuccess("송금완료!");
           closeModal();
           queryClient.invalidateQueries({ queryKey: ["accountList"] });
+          queryClient.invalidateQueries({ queryKey: ["groupList"] });
         },
         onError: () => closeModal(),
       },

@@ -1,6 +1,5 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
-import { slideUp } from "constants/animation";
 import { styled } from "styled-components";
 
 export const MainPageWrapper = styled(Flex)`
@@ -8,6 +7,11 @@ export const MainPageWrapper = styled(Flex)`
   justify-content: center;
   padding: 4rem 3rem;
   gap: 3rem;
+`;
+
+export const IconContainer = styled(Flex)`
+  justify-content: start;
+  gap: 1rem;
 `;
 
 export const LabelWrapper = styled(Flex)`
@@ -23,6 +27,7 @@ export const LabelWrapper = styled(Flex)`
 `;
 
 export const ChangeButton = styled.button`
+  width: 30%;
   font-size: 1.2rem;
   color: ${({ theme }) => theme.color.primary};
   font-weight: bold;
