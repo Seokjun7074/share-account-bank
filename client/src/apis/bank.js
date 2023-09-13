@@ -24,6 +24,8 @@ const bankAPI = {
   setMainAccount: (accountId) => axiosInstance.post("/accounts/main", { accountId }),
 
   checkAccountHost: (accountsNumber) => axiosInstance.post("/accounts/host", accountsNumber),
+
+  checkAccountPassword: (requestData) => axiosInstance.post("/accounts/password/verification", requestData),
 };
 
 export default bankAPI;
