@@ -1,4 +1,3 @@
-import ProgressBar from "components/@common/ProgressBar/ProgressBar";
 import * as S from "./GroupItem.style";
 import { useNavigate } from "react-router-dom";
 import { PATH } from "constants/path";
@@ -22,15 +21,34 @@ const GroupItem = ({ group }) => {
   return (
     <S.GroupItemWrapper onClick={handleNavigation}>
       <S.GroupHeader>
-        <span>Shinhan</span>
+        <S.Shinhan src={process.env.PUBLIC_URL + "/image/shinhan.png"} alt="Shinhan Logo" />
         <span>{group.groupName}</span>
       </S.GroupHeader>
       <S.GroupItemNameContainer>
-        <S.GroupItemNumber>{group.account}</S.GroupItemNumber>
         <S.Deposit>{setMoneyRegex(group.balance)}원</S.Deposit>
+        <S.GroupItemNumber>{group.account}</S.GroupItemNumber>
       </S.GroupItemNameContainer>
       <S.DepositContainer>
-        <ProgressBar goalMoney={group.goal} currentMoney={group.balance} />
+        <S.Left>
+          <S.GroupInfo>
+            <S.GroupInfoKey>목표액</S.GroupInfoKey>
+            <S.GroupInfoValue>{group.goal}</S.GroupInfoValue>
+          </S.GroupInfo>
+          <S.GroupInfo>
+            <S.GroupInfoKey>회비</S.GroupInfoKey>
+            <S.GroupInfoValue>{group.dues}</S.GroupInfoValue>
+          </S.GroupInfo>
+        </S.Left>
+        <S.Right>
+          <S.GroupInfo>
+            <S.GroupInfoKey>입금일</S.GroupInfoKey>
+            <S.GroupInfoValue>{group.duesDate}일</S.GroupInfoValue>
+          </S.GroupInfo>
+          <S.GroupInfo>
+            <S.GroupInfoKey>여행예정일</S.GroupInfoKey>
+            <S.GroupInfoValue>{group.startDate}</S.GroupInfoValue>
+          </S.GroupInfo>
+        </S.Right>
       </S.DepositContainer>
     </S.GroupItemWrapper>
   );
