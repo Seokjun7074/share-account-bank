@@ -31,10 +31,11 @@ export const CreateMainAccountContainer = styled(Flex)`
   height: 17rem;
   padding: 1rem;
   border-radius: 10px;
-  background-color: ${({ theme }) => theme.color.offwhite};
+  background-color: white;
   color: ${({ theme }) => theme.color.red};
   font-weight: bold;
   gap: 2rem;
+  overflow: hidden;
 `;
 
 export const CreateMainAccountButtonContainer = styled(Flex)`

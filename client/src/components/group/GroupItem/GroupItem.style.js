@@ -6,7 +6,7 @@ export const GroupItemWrapper = styled(Flex)`
   width: 100%;
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.white};
-
+  height: 20rem;
   justify-content: space-between;
   cursor: pointer;
   overflow: hidden;
