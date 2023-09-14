@@ -14,6 +14,7 @@ export const AccountListContainer = styled.div`
   width: calc(100% - 4rem);
   border-radius: 10px;
   overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 export const StyledSlider = styled(Slider)`

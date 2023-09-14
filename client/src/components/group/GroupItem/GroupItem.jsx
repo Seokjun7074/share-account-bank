@@ -25,8 +25,13 @@ const GroupItem = ({ group }) => {
         <span>{group.groupName}</span>
       </S.GroupHeader>
       <S.GroupItemNameContainer>
-        <S.Deposit>{setMoneyRegex(group.balance)}원</S.Deposit>
-        <S.GroupItemNumber>{group.account}</S.GroupItemNumber>
+        <S.LeftBody>
+          <S.Deposit>{setMoneyRegex(group.balance)}원</S.Deposit>
+          <S.GroupItemNumber>{group.account}</S.GroupItemNumber>
+        </S.LeftBody>
+        <S.RightBody>
+          <S.Airplane src={process.env.PUBLIC_URL + "/image/airplane.svg"} alt="airplane" />
+        </S.RightBody>
       </S.GroupItemNameContainer>
       <S.DepositContainer>
         <S.Left>

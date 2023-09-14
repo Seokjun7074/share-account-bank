@@ -18,15 +18,24 @@ const AccountItem = ({ accountId, balance, openModal }) => {
     <>
       <S.AccountItemWrapper>
         <S.AccountHeader>
-          <span>Shinhan</span>
+          <S.Shinhan src={process.env.PUBLIC_URL + "/image/shinhan.png"} alt="Shinhan Logo" />
         </S.AccountHeader>
         <S.DepositContainer>
-          <S.AccountItemNumber>{accountId}</S.AccountItemNumber>
-          <S.Deposit>{setMoneyRegex(balance)}원</S.Deposit>
+          <S.LeftBody>
+            <S.Deposit>{setMoneyRegex(balance)}원</S.Deposit>
+            <S.AccountItemNumber>{accountId}</S.AccountItemNumber>
+          </S.LeftBody>
+          <S.RightBody>
+            <S.Airplane src={process.env.PUBLIC_URL + "/image/airplane.svg"} alt="airplane" />
+          </S.RightBody>
         </S.DepositContainer>
         <S.AccountButtonContainer>
-          <S.DetailButton onClick={handleSelectAccount}>이체</S.DetailButton>
-          <S.DetailButton onClick={() => navigate(PATH.ACCOUNT_PAGE(accountId))}>조회</S.DetailButton>
+          <S.Left>
+            <S.DetailButton onClick={handleSelectAccount}>이체</S.DetailButton>
+          </S.Left>
+          <S.Right>
+            <S.DetailButton onClick={() => navigate(PATH.ACCOUNT_PAGE(accountId))}>조회</S.DetailButton>
+          </S.Right>
         </S.AccountButtonContainer>
       </S.AccountItemWrapper>
     </>

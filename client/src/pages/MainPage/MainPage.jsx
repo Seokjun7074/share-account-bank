@@ -32,9 +32,30 @@ const MainPage = () => {
       balance: 10000,
       represented: true,
     },
+    {
+      accountId: "110-123-123456",
+      groupId: 12,
+      isGroup: false,
+      balance: 10000,
+      represented: true,
+    },
   ];
   const groupListData = {
     data: [
+      {
+        groupId: 12, // 그룹 PK
+        groupName: "mygroup", // 그룹 이름
+        account: "110-111-123456", // 계좌 번호
+        goal: 1000000, // 목표 금액
+        balance: 300000, // 잔고
+        dues: 50000, // 월 회비
+        duesDate: 4, // 자동 이체를 할 날짜
+        startDate: "2023-09-12", // 여행을 출발할 날짜
+        member: 3, // 현재 참여 인원
+        money: "yen", // yen, yuan, dollar, euro, en ...
+        isPaid: false, // 내가 회비 냈는지 여부
+        isTravel: false, // 여행 중 인지 아닌지
+      },
       {
         groupId: 12, // 그룹 PK
         groupName: "mygroup", // 그룹 이름

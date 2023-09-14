@@ -21,16 +21,30 @@ export const GroupHeader = styled(Flex)`
   padding: 0 2rem;
 `;
 
+export const LeftBody = styled(Flex)`
+  height: 100%;
+  width: 50%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: start;
+`;
+export const RightBody = styled(LeftBody)`
+  align-items: end;
+`;
+
+export const Airplane = styled.img`
+  width: 30%;
+`;
+
 export const Shinhan = styled.img`
   height: 65%;
 `;
 
 export const GroupItemNameContainer = styled(Flex)`
   padding: 2rem;
-  flex-direction: column;
   justify-content: start;
   align-items: start;
-  gap: 1.5rem;
+  gap: 1rem;
   font-weight: 600;
   padding-bottom: 1rem;
 `;
@@ -69,7 +83,7 @@ export const GroupInfo = styled(Flex)`
   align-items: start;
   color: ${({ theme }) => theme.color.darkgray};
   font-weight: bold;
-  gap: 2rem;
+  gap: 1.5rem;
   white-space: nowrap;
 `;
 
