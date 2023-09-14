@@ -4,6 +4,4 @@ export const moneyName = {
   YUAN: "CNY",
   EURO: "EUR",
   POUND: "GBP",
-  PESOS: "PHP",
-  RUPEE: "INR",
 };

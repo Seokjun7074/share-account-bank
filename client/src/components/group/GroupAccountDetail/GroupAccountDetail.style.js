@@ -60,3 +60,6 @@ export const LogoImg = styled.img`
   height: 1.7rem;
   margin-right: 0.5rem;
 `;
+export const CountryFlagImage = styled.img`
+  width: 2rem;
+`;

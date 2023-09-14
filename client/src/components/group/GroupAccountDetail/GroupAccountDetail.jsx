@@ -1,21 +1,54 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { buildStyles, CircularProgressbarWithChildren } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { MdAirplanemodeActive } from "react-icons/md";
 import * as S from "./GroupAccountDetail.style";
 import { setMoneyRegex } from "utils/regex";
 import { useStratTravelMutation } from "hooks/apiHook/useStratTravelMutation";
 import { PATH } from "constants/path";
 import { useEffect, useState } from "react";
 import { theme } from "styles/theme";
+import { moneyName } from "constants/money";
+import shinhanAPI from "apis/shinhan";
 
 const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
   const navigate = useNavigate();
   const { groupId } = useParams();
   const stratTravelMutation = useStratTravelMutation(groupId);
   const [percentage, setPercentage] = useState(0);
+  const [resultAmount, setResultAmount] = useState("");
+  const [flag, setFlag] = useState("KOW");
 
   const handelStartTravel = () => {
     stratTravelMutation.mutate();
+  };
+  const handleFlag = (event) => {
+    if (event.target.value === "KOW") {
+      setFlag("KOW");
+      return;
+    }
+    setFlag(moneyName[event.target.value]);
+    exchangeMoney(moneyName[event.target.value]);
+  };
+
+  const exchangeMoney = async (bill) => {
+    try {
+      const requestData = {
+        dataHeader: {
+          apikey: "2023_Shinhan_SSAFY_Hackathon",
+        },
+        dataBody: {
+          serviceCode: "T0505",
+          환전통화: bill,
+          환전금액: balance.toString(),
+          거래자성명: "홍길동",
+          생년월일: "19930222",
+          휴대폰번호: "0101111111",
+        },
+      };
+      const response = await shinhanAPI.getExpectedMoney(requestData);
+      setResultAmount(Math.floor(balance / (Number(response.data.dataBody.원화예상금액) / balance)));
+    } catch {}
   };
 
   useEffect(() => {
@@ -26,7 +59,6 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
     strokeLinecap: "round",
     pathTransitionDuration: 1,
     pathColor: `${theme.color.green}`,
-    // trailColor: "#d6d6d6",
   });
 
   return (
@@ -44,12 +76,24 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
         </CircularProgressbarWithChildren>
       </S.ProgressBarContainer>
       <S.MoneyContainer>
-        <S.Money>{setMoneyRegex(balance)}원</S.Money>
-        <select name="국가">
+        {flag === "KOW" ? (
+          <S.Money>{setMoneyRegex(balance)}원</S.Money>
+        ) : (
+          <S.Money>{setMoneyRegex(resultAmount)}</S.Money>
+        )}
+        <select onChange={handleFlag} name="money">
+          <option value="KOW">KOW</option>
+          {Object.keys(moneyName).map((money) => (
+            <option key={money} value={money}>
+              {moneyName[money]}
+            </option>
+          ))}
+        </select>
+        {/* <select name="국가">
           <option value="KOW">KOW</option>
           <option value="USD">USD</option>
           <option value="JPY">JPY</option>
-        </select>
+        </select> */}
       </S.MoneyContainer>
       <S.GroupAccountButtonContainer>
         <S.GroupAccountButton onClick={handelStartTravel}>여행가기</S.GroupAccountButton>

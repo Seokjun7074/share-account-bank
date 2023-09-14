@@ -5,7 +5,6 @@ import useInput from "hooks/useInput";
 import * as S from "./ExchangeMoneyPage.style";
 import { moneyName } from "constants/money";
 import { useEmailVerificationMutation } from "hooks/apiHook/useEmailMutation";
-import EmailModal from "components/user/EmailModal/EmailModal";
 import businessAPI from "apis/business";
 import shinhanAPI from "apis/shinhan";
 import { setMoneyRegex } from "utils/regex";
