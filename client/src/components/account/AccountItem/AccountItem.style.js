@@ -4,15 +4,15 @@ import { styled } from "styled-components";
 
 export const AccountItemWrapper = styled(Flex)`
   flex-direction: column;
+  height: 17rem;
   width: 100%;
-  /* height: 17rem; */
   border-radius: 10px;
   background-color: ${({ theme }) => theme.color.white};
   justify-content: space-between;
   overflow: hidden;
 `;
 export const AccountHeader = styled(Flex)`
-  background: linear-gradient(to bottom, #36475f, #2c394f);
+  background: linear-gradient(to bottom, #6180d2, #5370c1);
   justify-content: space-between;
   height: 4rem;
   color: ${({ theme }) => theme.color.offwhite};

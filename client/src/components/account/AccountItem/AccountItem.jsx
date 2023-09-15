@@ -25,9 +25,6 @@ const AccountItem = ({ accountId, balance, openModal }) => {
             <S.Deposit>{setMoneyRegex(balance)}원</S.Deposit>
             <S.AccountItemNumber>{accountId}</S.AccountItemNumber>
           </S.LeftBody>
-          <S.RightBody>
-            <S.Airplane src={process.env.PUBLIC_URL + "/image/airplane.svg"} alt="airplane" />
-          </S.RightBody>
         </S.DepositContainer>
         <S.AccountButtonContainer>
           <S.Left>

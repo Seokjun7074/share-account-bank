@@ -13,14 +13,23 @@ export const AccountListWrapper = styled(Flex)`
 export const AccountListContainer = styled.div`
   width: calc(100% - 4rem);
   border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 `;
 
 export const StyledSlider = styled(Slider)`
-  .slick-slide div {
-    outline: none; // 슬라이드 클릭시 파란선을 제거하기 위해서 작성
+  .slick-slide {
+    outline: none;
+    border-radius: 10px;
   }
+  .slick-prev::before,
+  .slick-next::before {
+    opacity: 0;
+    display: none;
+  }
+  .slick-list {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  padding-bottom: 1rem;
 `;
 
 // 주계좌

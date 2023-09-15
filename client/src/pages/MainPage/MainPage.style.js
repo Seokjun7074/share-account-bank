@@ -5,13 +5,17 @@ import { styled } from "styled-components";
 export const MainPageWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: center;
-  /* padding: 1.5rem; */
-  gap: 3rem;
+  gap: 3.5rem;
 `;
 
 export const IconContainer = styled(Flex)`
   justify-content: start;
   gap: 1rem;
+`;
+
+export const AccountInfoContainer = styled(Flex)`
+  flex-direction: column;
+  gap: 2rem;
 `;
 
 export const LabelWrapper = styled(Flex)`
@@ -20,8 +24,6 @@ export const LabelWrapper = styled(Flex)`
   color: ${({ theme }) => theme.color.darkgray};
   background-color: ${({ theme }) => theme.color.white};
   font-weight: bold;
-  position: sticky;
-  top: 6rem;
   padding: 1rem 0;
   border-bottom: 1px solid ${({ theme }) => theme.color.lightgray};
 `;

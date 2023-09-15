@@ -1,6 +1,6 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
 import { MdCreditCard } from "react-icons/md";
 import AccountItem from "components/account/AccountItem/AccountItem";
 import * as S from "components/account/AccountList/AccountList.style";
@@ -29,7 +29,7 @@ const AccountList = ({ accountList, openModal, navigateNewAccount }) => {
   }, [accountList]);
 
   const sliderSetting = {
-    dots: false,
+    dots: true,
     lazyLoad: true,
     infinite: false,
     speed: 500,
@@ -53,7 +53,7 @@ const AccountList = ({ accountList, openModal, navigateNewAccount }) => {
                 </S.CreateMainAccountContainer>
               </>
             )}
-            {accountList?.map((group, idx) => (
+            {accountList?.map((group) => (
               <AccountItem
                 key={group.accountId}
                 accountId={group.accountId}
