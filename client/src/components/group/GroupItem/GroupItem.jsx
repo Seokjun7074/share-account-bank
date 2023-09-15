@@ -37,11 +37,11 @@ const GroupItem = ({ group }) => {
         <S.Left>
           <S.GroupInfo>
             <S.GroupInfoKey>목표액</S.GroupInfoKey>
-            <S.GroupInfoValue>{group.goal}</S.GroupInfoValue>
+            <S.GroupInfoValue>{setMoneyRegex(group.goal)}</S.GroupInfoValue>
           </S.GroupInfo>
           <S.GroupInfo>
             <S.GroupInfoKey>회비</S.GroupInfoKey>
-            <S.GroupInfoValue>{group.dues}</S.GroupInfoValue>
+            <S.GroupInfoValue>{setMoneyRegex(group.dues)}</S.GroupInfoValue>
           </S.GroupInfo>
         </S.Left>
         <S.Right>
