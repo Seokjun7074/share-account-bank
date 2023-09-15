@@ -1,6 +1,6 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
-import { slideUp } from "constants/animation";
+import { slideUp, vibration } from "constants/animation";
 import { styled } from "styled-components";
 
 export const DepositPageWrapper = styled(Flex)`
@@ -25,6 +25,7 @@ export const DepositImageContainer = styled(Flex)`
 
 export const DepositImage = styled.img`
   width: 100%;
+  animation: ${vibration} 1s infinite;
 `;
 
 export const SelectAccountBox = styled(Flex)`

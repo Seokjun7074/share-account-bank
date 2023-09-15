@@ -1,6 +1,6 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
-import { slideUp } from "constants/animation";
+import { slideDown, slideUp, vibration } from "constants/animation";
 import { styled } from "styled-components";
 
 export const InvitationPageWrapper = styled(Flex)`
@@ -14,6 +14,7 @@ export const InvitationMessage = styled.span`
   color: ${({ theme }) => theme.color.darkgray};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: bold;
+  animation: ${slideDown} 1s linear;
 `;
 
 export const InvitationImageContainer = styled(Flex)`
@@ -26,6 +27,7 @@ export const InvitationImageContainer = styled(Flex)`
 
 export const InvitationImage = styled.img`
   width: 100%;
+  animation: ${vibration} 1s infinite;
 `;
 
 export const InvitationInfoText = styled.span`

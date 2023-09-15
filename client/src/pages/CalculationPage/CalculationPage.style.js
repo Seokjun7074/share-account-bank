@@ -27,6 +27,7 @@ export const CalculationImageContainer = styled(Flex)`
 
 export const CalculationImage = styled.img`
   width: 100%;
+  animation: ${vibration} 1s infinite;
 `;
 export const CalculationInfoText = styled.span`
   color: ${({ theme }) => theme.color.gray};

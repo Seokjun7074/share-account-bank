@@ -37,12 +37,12 @@ export const slideRight = keyframes`
 
 export const vibration = keyframes` 
   0%{
-    transform: rotate(1deg);
+    transform: rotate(2deg);
   }
   50%{
-    transform: rotate(-1deg);
+    transform: rotate(-2deg);
   }
   100%{
-    transform: rotate(1deg);
+    transform: rotate(2deg);
   }
 `;
