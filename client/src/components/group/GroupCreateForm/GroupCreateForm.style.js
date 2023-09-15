@@ -4,10 +4,11 @@ import { styled } from "styled-components";
 
 export const InputWrapper = styled(Flex)`
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   gap: 3.5rem;
   text-align: center;
   width: 70%;
+  height: 100%;
 `;
 
 export const CustomSelect = styled.select`

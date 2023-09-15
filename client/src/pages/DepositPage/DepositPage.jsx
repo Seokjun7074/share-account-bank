@@ -60,7 +60,11 @@ const DepositPage = () => {
           <S.DepositImage src={process.env.PUBLIC_URL + "/image/bag.png"} alt="logo" onClick={() => setConfirm(true)} />
         )}
       </S.DepositImageContainer>
-      {confirm && <S.DepositButton onClick={transactMoney}>회비 입금하기</S.DepositButton>}
+      {confirm ? (
+        <S.DepositButton onClick={transactMoney}>회비 입금하기</S.DepositButton>
+      ) : (
+        <S.DepositMessage> </S.DepositMessage>
+      )}
     </S.DepositPageWrapper>
   );
 };

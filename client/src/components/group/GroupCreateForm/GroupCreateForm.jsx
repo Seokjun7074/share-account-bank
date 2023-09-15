@@ -102,10 +102,10 @@ const GroupCreateForm = ({ accountList, setGroupMutation }) => {
             </select>
           </S.FlagContainer>
         </S.SelectAccountBox>
-        <S.NextButton type="submit" onClick={handleSubmit}>
-          다음
-        </S.NextButton>
       </Form>
+      <S.NextButton type="submit" onClick={handleSubmit}>
+        다음
+      </S.NextButton>
     </S.InputWrapper>
   );
 };

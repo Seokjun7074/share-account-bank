@@ -6,6 +6,7 @@ export const GroupPageWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: center;
   gap: 2rem;
+  padding-bottom: 2rem;
 `;
 
 export const GroupInviteButton = styled(Button)`

@@ -1,18 +1,20 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
+import { slideUp } from "constants/animation";
 import { styled } from "styled-components";
 
 export const DepositPageWrapper = styled(Flex)`
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   height: calc(100vh - 6rem);
-  padding: 6rem 0;
+  padding: 2rem 0;
 `;
 
 export const DepositMessage = styled.span`
   color: ${({ theme }) => theme.color.darkgray};
   font-size: ${({ theme }) => theme.fontSize.m};
   font-weight: bold;
+  animation: ${slideUp} 1s linear;
 `;
 
 export const DepositImageContainer = styled(Flex)`
@@ -40,7 +42,7 @@ export const AccountSelect = styled.select`
 `;
 
 export const DepositButton = styled(Button)`
-  width: 60%;
+  width: 100%;
   background-color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.color.white};
   font-size: ${({ theme }) => theme.fontSize.m};

@@ -1,12 +1,13 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
+import { slideUp } from "constants/animation";
 import { styled } from "styled-components";
 
 export const InvitationPageWrapper = styled(Flex)`
   flex-direction: column;
-  justify-content: space-around;
-  height: 100vh;
-  padding: 9rem 0;
+  justify-content: space-between;
+  height: calc(100vh - 6rem);
+  padding: 2rem 0;
 `;
 
 export const InvitationMessage = styled.span`
@@ -32,10 +33,11 @@ export const InvitationInfoText = styled.span`
   font-size: ${({ theme }) => theme.fontSize.s};
   position: relative;
   bottom: 4rem;
+  animation: ${slideUp} 1s linear;
 `;
 
 export const InvitationButton = styled(Button)`
-  width: 60%;
+  width: 100%;
   background-color: ${({ theme }) => theme.color.primary};
   color: ${({ theme }) => theme.color.white};
   font-size: ${({ theme }) => theme.fontSize.m};

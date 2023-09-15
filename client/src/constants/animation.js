@@ -16,6 +16,9 @@ export const slideUp = keyframes` /* 2. css코드를 씀. */
       transform: translate(0, 100%);
       opacity: 0;
   }
+  70%{
+      opacity: 50%;
+  }
   100%{
       transform: translate(0, 0);
       opacity: 100%;

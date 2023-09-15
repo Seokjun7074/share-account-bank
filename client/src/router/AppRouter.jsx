@@ -41,10 +41,6 @@ const AppRouter = () => {
           path: PATH.LOGIN_PAGE,
           element: <LoginPage />,
         },
-        {
-          path: PATH.CALCULATION_PAGE(":groupId"),
-          element: <CalculationPage />,
-        },
       ],
     },
     {
@@ -107,6 +103,10 @@ const AppRouter = () => {
         {
           path: PATH.CREATE_ACCOUNT_PAGE,
           element: <CreateAccountPage />,
+        },
+        {
+          path: PATH.CALCULATION_PAGE(":groupId"),
+          element: <CalculationPage />,
         },
       ],
     },

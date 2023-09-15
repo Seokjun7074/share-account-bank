@@ -4,6 +4,7 @@ import styled from "styled-components";
 export const ListItem = styled(Flex)`
   flex-direction: column;
   gap: 1rem;
+  height: 100%;
 `;
 
 export const StoreItem = styled(Flex)`
