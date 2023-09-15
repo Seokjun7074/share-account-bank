@@ -31,5 +31,6 @@ export const CreateButton = styled(Button)`
 `;
 
 export const CancelButton = styled(CreateButton)`
-  background-color: ${({ theme }) => theme.color.red};
+  color: ${({ theme }) => theme.color.primary};
+  background-color: ${({ theme }) => theme.color.offwhite};
 `;

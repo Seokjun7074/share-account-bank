@@ -75,8 +75,8 @@ export const ButtonContainer = styled(Flex)`
 export const CancelButton = styled(Button)`
   width: 50%;
   padding: 0.8rem 2rem;
-  color: ${({ theme }) => theme.color.white};
-  background-color: ${({ theme }) => theme.color.red};
+  color: ${({ theme }) => theme.color.primary};
+  background-color: ${({ theme }) => theme.color.offwhite};
 `;
 
 export const ConfirmButton = styled(CancelButton)`

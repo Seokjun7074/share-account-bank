@@ -1,3 +1,4 @@
+import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
 import styled from "styled-components";
 
@@ -23,15 +24,16 @@ export const ModalButtonWrapper = styled.div`
   gap: 2rem;
 `;
 
-export const LeftButton = styled.button`
+export const LeftButton = styled(Button)`
   width: 50%;
   padding: 1rem 3rem;
-  background-color: ${({ theme }) => theme.color.red};
+  background-color: ${({ theme }) => theme.color.offwhite};
+  color: ${({ theme }) => theme.color.primary};
   font-size: ${({ theme }) => theme.fontSize.s};
-  color: #fff;
   border-radius: 10px;
   font-weight: bold;
 `;
 export const RightButton = styled(LeftButton)`
   background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.offwhite};
 `;

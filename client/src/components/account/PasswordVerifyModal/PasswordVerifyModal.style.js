@@ -27,12 +27,13 @@ export const ButtonContainer = styled(Flex)`
 
 export const CancelButton = styled(Button)`
   padding: 1rem 3rem;
-  background-color: ${({ theme }) => theme.color.red};
-  color: ${({ theme }) => theme.color.white};
+  color: ${({ theme }) => theme.color.primary};
+  background-color: ${({ theme }) => theme.color.offwhite};
   font-size: ${({ theme }) => theme.fontSize.s};
   font-weight: bold;
 `;
 
 export const ConfirmButton = styled(CancelButton)`
   background-color: ${({ theme }) => theme.color.primary};
+  color: ${({ theme }) => theme.color.white};
 `;
