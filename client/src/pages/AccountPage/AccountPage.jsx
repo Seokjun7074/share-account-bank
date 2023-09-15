@@ -6,7 +6,6 @@ import Receipt from "components/@common/Receipt/Receipt";
 const AccountPage = () => {
   const { accountNumber } = useParams();
   const { accountData } = useAccountQuery(accountNumber);
-  console.log(accountData);
   return (
     <S.AccountPageWrapper>
       <Receipt accountData={accountData?.data} />

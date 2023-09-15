@@ -15,7 +15,7 @@ export const ReceiptWrapper = styled(Flex)`
   -webkit-mask: var(--mask);
   mask: var(--mask);
   background-color: #f1f1f1;
-  animation: ${slideDown} 0.6s ease-in-out;
+  animation: ${slideDown} 1s ease-in-out;
 `;
 
 export const ReceiptCol = styled(Flex)`

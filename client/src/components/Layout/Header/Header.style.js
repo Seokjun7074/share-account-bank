@@ -5,7 +5,7 @@ export const HeaderWrapper = styled(Flex)`
   z-index: 30;
   height: 6rem;
   justify-content: ${({ $isMain }) => ($isMain ? "end" : "start")};
-  padding: 1rem 3rem;
+  padding: 1rem 2rem;
   position: sticky;
   top: 0;
   background-color: ${({ theme }) => theme.color.white};
