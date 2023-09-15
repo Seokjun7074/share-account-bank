@@ -1,6 +1,6 @@
 import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
-import { slideUp } from "constants/animation";
+import { slideUp, vibration } from "constants/animation";
 import { styled } from "styled-components";
 
 export const CalculationPageWrapper = styled(Flex)`

@@ -1,6 +1,6 @@
 import { keyframes } from "styled-components";
 
-export const slideDown = keyframes` /* 2. css코드를 씀. */
+export const slideDown = keyframes` 
   0%{
       transform: translate(0, -100%);
       opacity: 0;
@@ -11,7 +11,7 @@ export const slideDown = keyframes` /* 2. css코드를 씀. */
   }
 `;
 
-export const slideUp = keyframes` /* 2. css코드를 씀. */
+export const slideUp = keyframes` 
   0%{
       transform: translate(0, 100%);
       opacity: 0;
@@ -24,7 +24,7 @@ export const slideUp = keyframes` /* 2. css코드를 씀. */
       opacity: 100%;
   }
 `;
-export const slideRight = keyframes` /* 2. css코드를 씀. */
+export const slideRight = keyframes` 
   0%{
       transform: translate(-110%,0 );
       border-radius: 0;
@@ -32,5 +32,17 @@ export const slideRight = keyframes` /* 2. css코드를 씀. */
   100%{
       transform: translate(0, 0);
       border-radius: 20px;
+  }
+`;
+
+export const vibration = keyframes` 
+  0%{
+    transform: rotate(1deg);
+  }
+  50%{
+    transform: rotate(-1deg);
+  }
+  100%{
+    transform: rotate(1deg);
   }
 `;
