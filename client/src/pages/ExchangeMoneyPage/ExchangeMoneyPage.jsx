@@ -4,7 +4,6 @@ import { MdAirplanemodeActive } from "react-icons/md";
 import useInput from "hooks/useInput";
 import * as S from "./ExchangeMoneyPage.style";
 import { moneyName } from "constants/money";
-import { useEmailVerificationMutation } from "hooks/apiHook/useEmailMutation";
 import businessAPI from "apis/business";
 import shinhanAPI from "apis/shinhan";
 import { setMoneyRegex } from "utils/regex";
@@ -14,10 +13,8 @@ import PasswordVerifyModal from "components/account/PasswordVerifyModal/Password
 
 const ExchangeMoneyPage = () => {
   const { groupId } = useParams();
-  const verificationMutation = useEmailVerificationMutation();
   const [account, setAccount] = useState("");
   const [exchangeAmount, setExchangeAmount, exchangeAmountHandler] = useInput("");
-  const [showModal, setShowModal] = useState(false);
   const [flag, setFlag] = useState("");
   const [balance, setBalance] = useState("");
   const [resultAmount, setResultAmount] = useState("예상환전금액");
@@ -33,13 +30,6 @@ const ExchangeMoneyPage = () => {
     };
     groupAccountInfo();
   }, []);
-
-  const sendAccountVerification = () => {
-    setShowModal(true);
-  };
-  const verifyAccountCode = (code) => {
-    verificationMutation.mutate({ code });
-  };
 
   const handleFlag = (event) => {
     setFlag(moneyName[event.target.value]);
@@ -71,7 +61,13 @@ const ExchangeMoneyPage = () => {
 
   return (
     <S.SignUpPageWrapper>
-      <S.SignUpText>환전 신청</S.SignUpText>
+      <S.MessageContainer>
+        <S.SignUpText>
+          최대
+          <span style={{ color: "#6180D2" }}> 90%</span>의 우대율로
+        </S.SignUpText>
+        <S.SignUpText>환전을 신청하세요!</S.SignUpText>
+      </S.MessageContainer>
       <S.InputWrapper>
         <S.ValidateAccountContiner>
           <S.InputBox disabled placeholder="계좌번호" type="email" value={account} />

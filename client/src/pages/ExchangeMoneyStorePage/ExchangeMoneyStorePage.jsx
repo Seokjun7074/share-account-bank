@@ -22,19 +22,13 @@ const ExchangeMoneyStorePage = () => {
 
     ps.keywordSearch(word + " 신한은행", (result, status, _pagination) => {
       const newStores = [];
-
-      for (var i = 0; i < result.length; i++) {
-        newStores.push(result[i]);
-      }
-      console.log(word + " 신한은행");
+      result.forEach((store) => newStores.push(store));
       setStores(newStores);
-      console.log(newStores);
       return newStores;
     });
   };
 
   const handleListItemClick = (store) => {
-    // setModalVisible(true);
     openModal();
     setInfo(store);
   };
@@ -42,6 +36,7 @@ const ExchangeMoneyStorePage = () => {
   const handleLocationChange = (event) => {
     setWhere(event.target.value);
   };
+
   const handleSearchIconClick = (e) => {
     e.preventDefault();
     search(where);
@@ -49,7 +44,6 @@ const ExchangeMoneyStorePage = () => {
 
   useEffect(() => {
     const { kakao } = window;
-
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition(
         (position) => {
