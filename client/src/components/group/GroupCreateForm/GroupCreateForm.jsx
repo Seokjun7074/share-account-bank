@@ -6,6 +6,8 @@ import { Form } from "components/@common/Form/Form";
 import { moneyName } from "constants/money";
 import { MdAirplanemodeActive } from "react-icons/md";
 import { replaceComma, setMoneyRegex } from "utils/regex";
+import { checkValidatation } from "utils/validate";
+import { toastError } from "utils/toast";
 
 const GroupCreateForm = ({ accountList, setGroupMutation }) => {
   const intitialValue = {
@@ -25,7 +27,12 @@ const GroupCreateForm = ({ accountList, setGroupMutation }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const requestData = { ...registForm, dues: replaceComma(registForm.dues), goal: replaceComma(registForm.goal) };
-    setGroupMutation.mutate(requestData);
+    const resultValidation = checkValidatation(requestData);
+    if (resultValidation) {
+      setGroupMutation.mutate(requestData);
+      return;
+    }
+    toastError("모임 정보를 입력해주세요!");
   };
 
   const handleFlag = (event) => {
@@ -45,9 +52,6 @@ const GroupCreateForm = ({ accountList, setGroupMutation }) => {
               </option>
             ))}
           </S.CustomSelect>
-          {/* <S.CreateAccountButton type="button" onClick={openModal}>
-            계좌 생성
-          </S.CreateAccountButton> */}
         </S.SelectAccountBox>
         <LabelInput labelTitle="모임 이름" inputType="text" inputName="groupName" handler={handleregistForm} />
 

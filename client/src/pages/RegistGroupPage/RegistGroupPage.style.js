@@ -1,6 +1,5 @@
 import { styled } from "styled-components";
 import Flex from "components/@common/Flex/Flex";
-import Button from "components/@common/Button/Button";
 
 export const RegistGroupPageWrapper = styled(Flex)`
   flex-direction: column;
