@@ -32,6 +32,7 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
   const handelStartTravel = () => {
     stratTravelMutation.mutate();
   };
+
   const handleFlag = (event) => {
     setFlag(moneyName[event.target.value]);
     if (event.target.value === "KRW") return;
@@ -59,7 +60,7 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
   };
 
   useEffect(() => {
-    setPercentage((balance / goal) * 100);
+    setPercentage(Math.round((balance / goal) * 100));
   }, [goal, balance]);
 
   return (
