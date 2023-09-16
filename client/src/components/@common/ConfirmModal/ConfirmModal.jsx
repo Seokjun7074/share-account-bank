@@ -2,10 +2,11 @@ import Button from "components/@common/Button/Button";
 import Flex from "components/@common/Flex/Flex";
 import styled from "styled-components";
 
-export const ConfirmModal = ({ message, closeModal, onConfirm }) => {
+export const ConfirmModal = ({ message, subMessage, closeModal, onConfirm }) => {
   return (
     <ConfirmModalWrapper>
       <ConfirmMessage>{message}</ConfirmMessage>
+      <SubMessage>{subMessage}</SubMessage>
       <ButtonContainer>
         <CancelButton onClick={closeModal}>취소</CancelButton>
         <ConfirmButton onClick={onConfirm}>확인</ConfirmButton>
@@ -26,6 +27,11 @@ const ConfirmModalWrapper = styled(Flex)`
 const ConfirmMessage = styled.span`
   font-weight: bold;
   font-size: 2rem;
+  color: ${({ theme }) => theme.color.darkgray};
+`;
+
+const SubMessage = styled(ConfirmMessage)`
+  font-size: ${({ theme }) => theme.fontSize.s};
   color: ${({ theme }) => theme.color.darkgray};
 `;
 

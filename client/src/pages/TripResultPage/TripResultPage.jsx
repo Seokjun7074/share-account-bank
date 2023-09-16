@@ -6,9 +6,9 @@ import { setMoneyRegex } from "utils/regex";
 import { PATH } from "constants/path";
 
 const TripResultPage = () => {
+  const navigate = useNavigate();
   const { groupId } = useParams();
   const { finishTravelData } = useFinishTravelQuery(groupId);
-  const navigate = useNavigate();
 
   const newFinishTravelData = {
     accountNumber: finishTravelData?.group.account,
@@ -18,6 +18,16 @@ const TripResultPage = () => {
     limitMember: finishTravelData?.group.limitMember,
     historyList: [...finishTravelData?.historyList],
     participants: [...finishTravelData?.group.participants],
+  };
+
+  const handleNavigation = () => {
+    const sendData = {
+      balance: newFinishTravelData.balance,
+      participants: newFinishTravelData.participants,
+    };
+    navigate(PATH.CALCULATION_PAGE(groupId), {
+      state: sendData,
+    });
   };
 
   return (
@@ -32,9 +42,7 @@ const TripResultPage = () => {
           <span>{newFinishTravelData?.limitMember}명</span>
         </S.groupInfoContainer>
       </Receipt>
-      <S.TripCalculationButton onClick={() => navigate(PATH.CALCULATION_PAGE(groupId))}>
-        정산하기
-      </S.TripCalculationButton>
+      <S.TripCalculationButton onClick={handleNavigation}>정산하기</S.TripCalculationButton>
     </S.TripResultPageWrapper>
   );
 };
