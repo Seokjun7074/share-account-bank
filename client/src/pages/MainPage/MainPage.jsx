@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecoilValue } from "recoil";
-import { MdAddCard, MdReduceCapacity } from "react-icons/md";
+import { MdAddCard, MdOutlineAirplaneTicket } from "react-icons/md";
 import * as S from "./MainPage.style";
 import GroupList from "components/group/GroupList/GroupList";
 import AccountList from "components/account/AccountList/AccountList";
@@ -42,8 +42,8 @@ const MainPage = () => {
         <S.AccountInfoContainer>
           <S.LabelWrapper>
             <S.IconContainer>
-              <span>내 계좌</span>
               <MdAddCard />
+              <span>내 계좌</span>
             </S.IconContainer>
             <S.ChangeButton onClick={() => navigate(PATH.CREATE_ACCOUNT_PAGE)}>계좌 개설</S.ChangeButton>
           </S.LabelWrapper>
@@ -56,8 +56,8 @@ const MainPage = () => {
         <S.AccountInfoContainer>
           <S.LabelWrapper>
             <S.IconContainer>
+              <MdOutlineAirplaneTicket />
               <span>내 모임 계좌</span>
-              <MdReduceCapacity />
             </S.IconContainer>
             <S.ChangeButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>모임 생성</S.ChangeButton>
           </S.LabelWrapper>

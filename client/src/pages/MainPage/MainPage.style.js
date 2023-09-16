@@ -10,7 +10,7 @@ export const MainPageWrapper = styled(Flex)`
 
 export const IconContainer = styled(Flex)`
   justify-content: start;
-  gap: 1rem;
+  gap: 0.3rem;
 `;
 
 export const AccountInfoContainer = styled(Flex)`
