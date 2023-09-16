@@ -1,5 +1,5 @@
 export const moneyName = {
-  WON: "KOW",
+  WON: "KRW",
   DOLLAR: "USD",
   YEN: "JPY",
   YUAN: "CNY",
@@ -8,7 +8,7 @@ export const moneyName = {
 };
 
 export const moneyKoreanName = {
-  KOW: "원",
+  KRW: "원",
   USD: "달러",
   JPY: "엔",
   CNY: "위안",

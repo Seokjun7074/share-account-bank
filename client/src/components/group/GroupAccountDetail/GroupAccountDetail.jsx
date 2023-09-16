@@ -21,7 +21,7 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
 
   const [percentage, setPercentage] = useState(0);
   const [resultAmount, setResultAmount] = useState("");
-  const [flag, setFlag] = useState("KOW");
+  const [flag, setFlag] = useState("KRW");
 
   const progressStyle = buildStyles({
     strokeLinecap: "round",
@@ -34,7 +34,7 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
   };
   const handleFlag = (event) => {
     setFlag(moneyName[event.target.value]);
-    if (event.target.value === "KOW") return;
+    if (event.target.value === "KRW") return;
     exchangeMoney(moneyName[event.target.value]);
   };
 
@@ -80,7 +80,7 @@ const GroupAccountDetail = ({ groupName, account, goal, balance }) => {
         </S.ProgressBarContainer>
         <S.MoneyContainer>
           <S.ExchangeContainer>
-            {flag === "KOW" ? (
+            {flag === "KRW" ? (
               <S.Money>{setMoneyRegex(balance)}원</S.Money>
             ) : (
               <>
