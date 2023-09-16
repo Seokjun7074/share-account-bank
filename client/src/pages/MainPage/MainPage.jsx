@@ -64,6 +64,7 @@ const MainPage = () => {
           <GroupList groupList={groupListData?.data} navigateNewGroup={navigateNewGroup} />
         </S.AccountInfoContainer>
       </S.MainPageWrapper>
+
       <Modal id="deposit">
         <DepositModal selectedMyAccount={selectedMyAccount} closeModal={closeDepositModal} />
       </Modal>
