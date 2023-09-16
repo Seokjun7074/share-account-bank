@@ -47,11 +47,7 @@ const MainPage = () => {
             </S.IconContainer>
             <S.ChangeButton onClick={() => navigate(PATH.CREATE_ACCOUNT_PAGE)}>계좌 개설</S.ChangeButton>
           </S.LabelWrapper>
-          <AccountList
-            accountList={sortesAccountList}
-            openModal={openDepositModal}
-            navigateNewAccount={navigateNewAccount}
-          />
+          <AccountList accountList={sortesAccountList} openModal={openDepositModal} />
         </S.AccountInfoContainer>
         <S.AccountInfoContainer>
           <S.LabelWrapper>
@@ -61,7 +57,7 @@ const MainPage = () => {
             </S.IconContainer>
             <S.ChangeButton onClick={() => navigate(PATH.REGIST_GROUP_PAGE)}>모임 생성</S.ChangeButton>
           </S.LabelWrapper>
-          <GroupList groupList={groupListData?.data} navigateNewGroup={navigateNewGroup} />
+          <GroupList groupList={groupListData?.data} />
         </S.AccountInfoContainer>
       </S.MainPageWrapper>
 

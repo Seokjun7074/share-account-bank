@@ -1,6 +1,3 @@
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
-// import Slider from "react-slick";
 import { MdCreditCard } from "react-icons/md";
 import AccountItem from "components/account/AccountItem/AccountItem";
 import * as S from "components/account/AccountList/AccountList.style";
@@ -11,7 +8,7 @@ import Modal from "components/@common/Modal/Modal";
 import SampleNextArrow from "components/@common/CarouselArrow/SampleNextArrow";
 import SamplePrevArrow from "components/@common/CarouselArrow/SamplePrevArrow";
 
-const AccountList = ({ accountList, openModal, navigateNewAccount }) => {
+const AccountList = ({ accountList, openModal }) => {
   const { openModal: openCreateAccountModal, closeModal: closeCreateAccountModal } = useModal("createMainAccount");
   const [havaMainAccount, setHaveMainAccount] = useState(true);
   const slickRef = useRef(null);
@@ -24,6 +21,7 @@ const AccountList = ({ accountList, openModal, navigateNewAccount }) => {
     if (findedData === undefined) return false;
     return true;
   };
+
   useEffect(() => {
     setHaveMainAccount(findMainAccount(accountList));
   }, [accountList]);
@@ -61,15 +59,6 @@ const AccountList = ({ accountList, openModal, navigateNewAccount }) => {
                 openModal={openModal}
               />
             ))}
-            <>
-              <S.CreateMainAccountContainer onClick={navigateNewAccount}>
-                <h3 style={{ color: "#6180D2" }}>계좌를 새로 개설할까요?</h3>
-                <S.CreateMainAccountButtonContainer>
-                  <S.CreateMainAccountButton>신규 계좌 개설하러가기</S.CreateMainAccountButton>
-                  <MdCreditCard size={"2rem"} />
-                </S.CreateMainAccountButtonContainer>
-              </S.CreateMainAccountContainer>
-            </>
           </S.StyledSlider>
         </S.AccountListContainer>
         <SampleNextArrow onClick={next} />
