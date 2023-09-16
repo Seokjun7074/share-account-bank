@@ -1,9 +1,13 @@
 import useModal from "hooks/useModal";
 import * as S from "./Modal.style";
-import React from "react";
+import React, { useEffect } from "react";
 
 function Modal({ children, id }) {
   const { modalToggleState, closeModal } = useModal(id);
+
+  useEffect(() => {
+    return closeModal();
+  }, []);
 
   return (
     <>
