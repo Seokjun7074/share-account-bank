@@ -6,7 +6,7 @@ export const TripResultPageWrapper = styled(Flex)`
   width: 100%;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem 0;
+  padding: 4rem 0;
   gap: 4rem;
 `;
 

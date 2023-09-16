@@ -5,7 +5,7 @@ export const RegistGroupPageWrapper = styled(Flex)`
   flex-direction: column;
   justify-content: space-between;
   height: calc(100vh - 6rem);
-  padding: 2rem 0;
+  padding: 4rem 0;
   gap: 6rem;
 `;
 export const RegistGroupText = styled.span`
