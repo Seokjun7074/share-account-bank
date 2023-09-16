@@ -1,9 +1,11 @@
+import { useState } from "react";
+import Lottie from "lottie-react";
 import { PATH } from "constants/path";
 import { useCreateAccountMutation } from "hooks/apiHook/useCreateAccountMutation";
 import useInput from "hooks/useInput";
 import * as S from "pages/CreateAccountPage/CreateAccountPage.style";
-import { useState } from "react";
 import { toastError } from "utils/toast";
+import card from "lotties/card";
 
 const CreateAccountPage = () => {
   const [password, setPassword, passwordHandeler] = useInput();
@@ -52,7 +54,14 @@ const InfoCreateAccount1 = () => {
       <S.CreateAccountHeaderContainer>
         <S.CreateAccountHeader>새로운 계좌를 만드시겠어요?</S.CreateAccountHeader>
       </S.CreateAccountHeaderContainer>
-      <S.CreateAccountBody></S.CreateAccountBody>
+      <S.CreateAccountBody>
+        <Lottie
+          animationData={card}
+          style={{
+            height: "100%",
+          }}
+        />
+      </S.CreateAccountBody>
     </>
   );
 };

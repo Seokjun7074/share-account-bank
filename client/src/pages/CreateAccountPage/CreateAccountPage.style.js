@@ -23,6 +23,7 @@ export const CreateAccountBody = styled(Flex)`
   flex-direction: column;
   gap: 3rem;
   justify-content: space-between;
+  overflow: hidden;
 `;
 
 export const CreateAccountInput = styled.input`
@@ -31,7 +32,7 @@ export const CreateAccountInput = styled.input`
   font-size: 2rem;
   background-color: ${({ theme }) => theme.color.offwhite};
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 20px;
   color: ${({ theme }) => theme.color.darkgray};
   font-weight: bold;
 `;
